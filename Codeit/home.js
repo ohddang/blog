@@ -57,16 +57,8 @@ function stopDrag() {
   if(isDragging){
     isDragging = false;
     document.addEventListener("mousemove", dragDice);
-
-    let matrix = new DOMMatrix(dice.style.transform);
-    console.log(matrix);
   }
 }
-
-function outDrag(event){
-  consolg.log(event);
-}
-
 
 function updateScreen() {
   dice.getBoundingClientRect();
@@ -82,7 +74,6 @@ function onClickA(value) {
   console.log(`Click ${value}`);
   let x=0;
   let y=0;
-  let z=0;
   switch(value){
     case 'A':
       x = -90; y = -180; color="red";
@@ -105,19 +96,20 @@ function onClickA(value) {
   }
   currentRotationX = x;
   currentRotationY = y;
-  dice.style.transform = `rotateX(${x}deg) rotateY(${y}deg) rotateZ(${z}deg)`;
+  dice.style.transform = `rotateX(${x}deg) rotateY(${y}deg)`;
   drag_panel.style.backgroundColor = color;
 }
 
 function onClickLink(value){
   console.log(value);
-  onClickA('D');
 
   function handleTransitionEnd(){
     window.location = value;
-
+    // console.log("transitionEnd");
     dice.removeEventListener('transitionend', handleTransitionEnd);
   }
 
   dice.addEventListener('transitionend', handleTransitionEnd);
+
+  onClickA('D');
 }
