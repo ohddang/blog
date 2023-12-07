@@ -10,12 +10,15 @@ const face4 = document.getElementById("face4");
 let isDragging = false;
 let startMouseX = 0;
 let startMouseY = 0;
-let currentRotationX = 0;
-let currentRotationY = 0;
+let currentRotationX = -45;
+let currentRotationY = 45;
 
 dice.addEventListener("mousedown", startDrag);
 drag_panel.addEventListener("mousedown", startDrag);
 document.addEventListener("mouseup", stopDrag);
+
+// Set dice transform
+dice.style.transform = `rotateX(${currentRotationX}deg) rotateY(${currentRotationY}deg)`;
 
 // A : x->-90 y->-180 red
 // B : x->0   y->-90 orange
@@ -105,7 +108,6 @@ function onClickLink(value){
 
   function handleTransitionEnd(){
     window.location = value;
-    // console.log("transitionEnd");
     dice.removeEventListener('transitionend', handleTransitionEnd);
   }
 
