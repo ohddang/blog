@@ -17,7 +17,6 @@ dice.addEventListener("mousedown", startDrag);
 drag_panel.addEventListener("mousedown", startDrag);
 document.addEventListener("mouseup", stopDrag);
 
-// Set dice transform
 dice.style.transform = `rotateX(${currentRotationX}deg) rotateY(${currentRotationY}deg)`;
 
 // A : x->-90 y->-180 red
