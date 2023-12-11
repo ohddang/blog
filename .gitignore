@@ -5,3 +5,4 @@ react-tetris/yarn.lock
 react-tetris/public/
 react-tetris/src/
 react-tetris/.gitignore
+node_modules/

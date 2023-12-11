@@ -25,15 +25,26 @@ footer {
 }
 
 .contents{
+  width: 100%;
+  height: calc(100vh - 100px);
+  display:flex;
+}
+
+.page_list{
+  width: 200px;
+  height: 100%;
+  background-color:gray;
+}
+
+.page_contents{
   width:100%;
 
   display:flex;
   flex-direction:column;
-  justify-content: center;
+  justify-content:flex-start;
   flex-grow: 1;
 
-  /* background:linear-gradient(0deg, rgba(0,0,0,.3), rgba(255,255,255,1.0) 100%);
-  background-color: red; */
+  margin-left: 50px;
 }
 
 .input_command{
