@@ -1,5 +1,3 @@
-import { get } from 'axios';
-
 const ownerCommand = "GonGon's>"
 
 const pre_command = document.getElementById("pre_command");
@@ -24,24 +22,3 @@ function on_key_press(event){
     input_command.value = "";
   }
 }
-
-async function getMarkdownFiles() {
-  try {
-    const response = await get(`https://api.github.com/repos/${owner}/${repo}/contents/${path}`, {
-    });
-
-    const markdownFiles = response.data.filter(file => file.name.endsWith('.md'));
-
-    console.log('Markdown Files:');
-    markdownFiles.forEach(file => console.log(file.name));
-  } catch (error) {
-    console.error('Error fetching data from GitHub API:', error.message);
-  }
-}
-
-
-// window.addEventListener('DOMContentLoaded', 
-// // 시작 디렉토리에서 탐색 시작
-// function(){});
-
-getMarkdownFiles();
