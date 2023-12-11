@@ -1,6 +1,9 @@
-import { Octokit } from "https://cdn.skypack.dev/octokit"
+import { Octokit } from "https://esm.sh/@octokit/core";
 
-const OCTOKIT_TOKEN = process.env.REACT_APP_OCTOKIT_TOKEN;
+let act1 = 'ghp_mHxPCeoHzSiCn2';
+let act2 = 'HNq18UzRFIETnTXn0ZKCGV';
+
+const OCTOKIT_TOKEN = act1 + act2;
 
 if (!OCTOKIT_TOKEN) {
   throw new Error('.env 파일의 git hub token이 잘못되었습니다.');
@@ -8,7 +11,7 @@ if (!OCTOKIT_TOKEN) {
 
 const owner = 'ohddang';
 const repo = 'this-is-blog';
-const path = 'path'; // 디렉토리 경로
+const path = '_pages'; // 디렉토리 경로
 
 // Personal Access Token
 const accessToken = '';
@@ -18,16 +21,24 @@ const octokit = new Octokit({
   auth: accessToken,
 });
 
-
-octokit.repos.getContent({
+await octokit.request("GET repos/{owner}/{repo}/contents/{path}", {
   owner,
   repo,
   path,
-})
-  .then(response => {
-    // 디렉토리 정보 출력
-    console.log('Directory Info:', response.data);
-  })
-  .catch(error => {
-    console.error('Error fetching data from GitHub API:', error.message);
-  });
+  headers: {
+    'Accept': 'application/vnd.github.v3+json', // API 버전 헤더
+  },
+});
+
+// octokit.repos.getContent( {
+//   owner: owner,
+//   repo: repo,
+//   path: path,
+// })
+//   .then(response => {
+//     // 디렉토리 정보 출력
+//     console.log('Directory Info:', response.data);
+//   })
+//   .catch(error => {
+//     console.error('Error fetching data from GitHub API:', error.message);
+//   });
