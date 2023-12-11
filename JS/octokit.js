@@ -11,7 +11,7 @@ if (!OCTOKIT_TOKEN) {
 
 const owner = 'ohddang';
 const repo = 'this-is-blog';
-const path = '_pages'; // 디렉토리 경로
+const path = '_pages/weekly-paper'; // 디렉토리 경로
 
 // Personal Access Token
 const accessToken = '';
@@ -21,24 +21,19 @@ const octokit = new Octokit({
   auth: accessToken,
 });
 
-await octokit.request("GET repos/{owner}/{repo}/contents/{path}", {
-  owner,
-  repo,
-  path,
-  headers: {
-    'Accept': 'application/vnd.github.v3+json', // API 버전 헤더
-  },
-});
+// GitHub API 호출
+try {
+  const response = await octokit.request('GET /repos/{owner}/{repo}/contents/{path}', {
+    owner,
+    repo,
+    path,
+    headers: {
+      'Accept': 'application/vnd.github.v3+json', // API 버전 헤더
+    },
+  });
 
-// octokit.repos.getContent( {
-//   owner: owner,
-//   repo: repo,
-//   path: path,
-// })
-//   .then(response => {
-//     // 디렉토리 정보 출력
-//     console.log('Directory Info:', response.data);
-//   })
-//   .catch(error => {
-//     console.error('Error fetching data from GitHub API:', error.message);
-//   });
+  // 응답 데이터 출력
+  console.log('Directory Info:', response.data);
+} catch (error) {
+  console.error('Error fetching data from GitHub API:', error.message);
+}
