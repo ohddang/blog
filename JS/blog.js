@@ -11,8 +11,6 @@ const owner = 'ohddang';
 const repo = 'this-is-blog';
 const path = '/pages';
 
-const accessToken = "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";
-
 // 특정 경로 설정
 const rootPath = "../pages";
 
@@ -30,9 +28,6 @@ function on_key_press(event){
 async function getMarkdownFiles() {
   try {
     const response = await get(`https://api.github.com/repos/${owner}/${repo}/contents/${path}`, {
-      headers: {
-        Authorization: `token ${accessToken}`,
-      },
     });
 
     const markdownFiles = response.data.filter(file => file.name.endsWith('.md'));
