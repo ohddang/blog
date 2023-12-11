@@ -1,3 +1,5 @@
+import { octokit } from './octokit';
+
 const ownerCommand = "GonGon's>"
 
 const pre_command = document.getElementById("pre_command");
@@ -22,3 +24,5 @@ function on_key_press(event){
     input_command.value = "";
   }
 }
+
+octokit.GetGithubRepo();
