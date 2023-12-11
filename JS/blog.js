@@ -25,4 +25,4 @@ function on_key_press(event){
   }
 }
 
-octokit.GetGithubRepo();
+let response = octokit.GetGithubRepo();
