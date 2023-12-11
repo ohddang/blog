@@ -1,10 +1,12 @@
+import { get } from 'axios';
+
 const ownerCommand = "GonGon's>"
 
 const pre_command = document.getElementById("pre_command");
 const input_command = document.getElementById("input_command");
 const page_list = document.getElementById("page_list");
 
-const axios = require('axios');
+
 const owner = 'ohddang';
 const repo = 'this-is-blog';
 const path = '/pages';
@@ -27,7 +29,7 @@ function on_key_press(event){
 
 async function getMarkdownFiles() {
   try {
-    const response = await axios.get(`https://api.github.com/repos/${owner}/${repo}/contents/${path}`, {
+    const response = await get(`https://api.github.com/repos/${owner}/${repo}/contents/${path}`, {
       headers: {
         Authorization: `token ${accessToken}`,
       },
