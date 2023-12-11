@@ -24,5 +24,3 @@ function on_key_press(event){
     input_command.value = "";
   }
 }
-
-let response = octokit.GetGithubRepo();

@@ -18,9 +18,7 @@ const octokit = new Octokit({
   auth: accessToken,
 });
 
-// GitHub API 호출
-export function GetGithubRepo(){
-  console.log("GetGithubRepo");
+
 octokit.repos.getContent({
   owner,
   repo,
@@ -33,4 +31,3 @@ octokit.repos.getContent({
   .catch(error => {
     console.error('Error fetching data from GitHub API:', error.message);
   });
-}
