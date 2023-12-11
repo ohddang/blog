@@ -1,4 +1,4 @@
-import { Octokit } from '@octokit/rest';
+const { Octokit } = require('@octokit/rest');
 
 const OCTOKIT_TOKEN = process.env.REACT_APP_OCTOKIT_TOKEN;
 
