@@ -13,7 +13,7 @@ const path = 'path'; // 디렉토리 경로
 // Personal Access Token
 const accessToken = '';
 
-// Octokit 인스턴스 생성
+// Octokit 인스턴스 생성 
 const octokit = new Octokit({
   auth: accessToken,
 });
