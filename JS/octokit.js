@@ -1,4 +1,4 @@
-import { Octokit } from '@octokit/rest';
+import { Octokit } from "https://cdn.skypack.dev/octokit"
 
 const OCTOKIT_TOKEN = process.env.REACT_APP_OCTOKIT_TOKEN;
 
