@@ -1,4 +1,5 @@
-import { Octokit } from "https://esm.sh/@octokit/core";
+import { Octokit } from "https://esm.sh/@octokit/core"; // CDN
+
 
 // FIXME : env value
 // let act1 = 'ghp_mHxPCeoHzSiCn2';
@@ -9,8 +10,6 @@ import { Octokit } from "https://esm.sh/@octokit/core";
 // if (!OCTOKIT_TOKEN) {
 //   throw new Error('.env 파일의 git hub token이 잘못되었습니다.');
 // }
-
-
 
 const owner = 'ohddang';
 const repo = 'this-is-blog';
@@ -54,7 +53,8 @@ async function requestGithubRepository(path, parentElement=null){
       else if(rsp.type == "file" && String(rsp.name).split('.')[1] == "md"){
         // TODO : make obj {id : path(includes .md)}
         let li = makeMarkdownElement(rsp);
-        parentElement.appendChild(li);
+        if(parentElement != null)
+          parentElement.appendChild(li);
 
         // TODO : read .md file
       }
