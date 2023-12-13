@@ -1,5 +1,4 @@
-import { Octokit } from "https://esm.sh/@octokit/core"; // CDN
-
+import { Octokit } from "https://esm.sh/@octokit/core";// CDN
 
 // FIXME : env value
 // let act1 = 'ghp_mHxPCeoHzSiCn2';
