@@ -1,0 +1,3 @@
+[submodule "react-tetris"]
+	path = react-tetris
+	url = https://github.com/ohddang/react-tetris.git
