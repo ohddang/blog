@@ -7,17 +7,30 @@
   <title>곤곤 프론트앤드 끄적여보기</title>
 </head>
 <body>
-  <header>    
-  </header>
-  <div class="drag_panel" id="drag_panel"></div>
-  <div class="dice rotate-container" id="dice">
-    <div class="face" id="face1"><a href = "HTML/blog.html" class="dice_font">Black</a></div>
-    <div class="face" id="face2"><a href = "HTML/blog.html" class="dice_font">Black</a></div>
-    <div class="face" id="face3"><a href = "https://ohddang.github.io/react-tetris/tetris" class="dice_font">Tetris</a></div>
-    <div class="face" id="face4"><a href = "https://ohddang.github.io/react-tetris/tetris" class="dice_font">Tetris</a></div>
-    <div class="face" id="face5"><a href = "mission/linkbrary.html" class="dice_font">Normal</a></div>
-    <div class="face" id="face6"><a href = "mission/linkbrary.html" class="dice_font">Normal</a></div>
+  <div class="modal" id="modal">
+    <div class="modal_content"></div>
+    <img src ="/assets/cross.png" class="modal_close" id="modal_close">
   </div>
+
+  <header>
+    <div class="icon_frame">
+      <img src = "/assets/square.png" class="icon" id="square">
+    </div>
+    <div class="icon_frame">
+      <img src = "/assets/tetris.png" class="icon icon-game" id="game">
+    </div>
+  </header> 
+  <div class="drag_panel" id="drag_panel">
+    <div class="dice rotate-container" id="dice">
+      <div class="face" id="face1"><a href = "HTML/blog.html" class="dice_font">Black</a></div>
+      <div class="face" id="face2"><a href = "HTML/blog.html" class="dice_font">Black</a></div>
+      <div class="face" id="face3"><a href = "https://ohddang.github.io/react-tetris/tetris" class="dice_font">Tetris</a></div>
+      <div class="face" id="face4"><a href = "https://ohddang.github.io/react-tetris/tetris" class="dice_font">Tetris</a></div>
+      <div class="face" id="face5"><a href = "mission/linkbrary.html" class="dice_font">Normal</a></div>
+      <div class="face" id="face6"><a href = "mission/linkbrary.html" class="dice_font">Normal</a></div>
+    </div>
+  </div>
+  <footer></footer>
   <script src="main.js"></script>
 </body>
 </html>
