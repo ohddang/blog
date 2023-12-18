@@ -4,21 +4,28 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="modal.css">
   <title>곤곤 프론트앤드 끄적여보기</title>
 </head>
 <body>
   <div class="modal" id="modal">
-    <div class="modal_content">
-      <div class="content_title" id="content_title"></div>
-      <div class="content_thumb">
-        <div class="content_thumb_img"></div>
-        <div class="content_thumb_desc"></div>
-      </div>
-      <div class="content_desc"></div>
+    <div class="contents_frame" id="contents_frame">
+      <ul class="contents_list" id="contents_list">
+        <li class="content_item">
+          <a name = "first_item"></a>
+          <div class="content_title">타이틀</div>
+          <div class="content_thumb">
+            <div class="content_thumb_img">이미지 들어갈꺼</div>
+            <div class="content_thumb_desc">이미지 설명</div>
+          </div>
+          <div class="content_desc">포트폴리오 세부 설명</div>
+        </li>
+      </ul>
     </div>
     <img src ="assets/cross.png" class="modal_close" id="modal_close">
+    <img src ="assets/left-arrow.png" class="prev_arrow" id="prev_arrow">
+    <img src ="assets/right-arrow.png" class="next_arrow" id="next_arrow">
   </div>
-
   <header>
     <div class="icon_frame">
       <img src = "assets/square.png" class="icon" id="square">
