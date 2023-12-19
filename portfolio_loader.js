@@ -1,4 +1,4 @@
-import data from '/json/portfolio.js'
+import data from '/json/portfolio.json'
 
 const prev_arrow = document.getElementById("prev_arrow");
 const next_arrow = document.getElementById("next_arrow");
