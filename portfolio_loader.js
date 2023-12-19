@@ -1,4 +1,4 @@
-import data from 'json/portfolio.json'
+
 
 const prev_arrow = document.getElementById("prev_arrow");
 const next_arrow = document.getElementById("next_arrow");
@@ -8,7 +8,7 @@ next_arrow.addEventListener('click', onNextArrow);
 
 const element_list = document.getElementById("contents_list");
 
-let items = JSON.parse(JSON.stringify(data));
+let items = JSON.parse(JSON.stringify('json/portfolio.json'));
 
 const move_x = 759;
 let scroll_x = 0;
