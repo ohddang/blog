@@ -2,42 +2,42 @@
   {
     "id": "tetris",
     "title": "테트리스",
-    "thumb_url": "/assets/thumb/tetris.png",
+    "thumb_url": "assets/thumb/tetris.png",
     "skills": "javascript, react, redux, css",
     "startAt": "2023-12-01"
   },
   {
     "id": "chart",
     "title": "오늘의 주식",
-    "thumb_url": "/assets/thumb/chart.png",
+    "thumb_url": "assets/thumb/chart.png",
     "skills": "typescript, reactQuery, redux, tailwind",
     "startAt": ""
   },
   {
     "id": "facebook",
     "title": "페이스북 만들기",
-    "thumb_url": "/assets/thumb/facebook.png",
+    "thumb_url": "assets/thumb/facebook.png",
     "skills": "javascript, react, redux, styledComponents",
     "startAt": ""
   },
   {
     "id": "lol",
     "title": "롤 전적 검색",
-    "thumb_url": "/assets/thumb/lol.png",
+    "thumb_url": "assets/thumb/lol.png",
     "skills": "javascript, react, zustand, styledComponents",
     "startAt": ""
   },
   {
     "id": "map",
     "title": "내 주변 맛집",
-    "thumb_url": "/assets/thumb/map.png",
+    "thumb_url": "assets/thumb/map.png",
     "skills": "typescript, react, reactQuery, css",
     "startAt": ""
   },
   {
     "id": "three",
     "title": "3D 놀이터",
-    "thumb_url": "/assets/thumb/playground.png",
+    "thumb_url": "assets/thumb/playground.png",
     "skills": "javascript, tailwind, threejs, zustand",
     "startAt": ""
   }
