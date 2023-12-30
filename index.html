@@ -9,14 +9,14 @@
       href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Noto+Sans+KR:wght@400;700&family=Poppins:wght@400;600&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="/src/style.css" />
+    <link rel="stylesheet" href="/src/dice.css" />
     <link rel="stylesheet" href="/src/project.css" />
     <title>곤곤 프론트앤드 끄적여보기</title>
   </head>
   <body>
-    <article class="contents">
+    <article class="contents" id="contents">
       <div class="drag_panel" id="drag_panel">
-        <div class="dice rotate-container" id="dice">
+        <div class="dice rotate_container" id="dice">
           <div class="face" id="face1"></div>
           <div class="face" id="face2"></div>
           <div class="face" id="face3"></div>
@@ -25,19 +25,21 @@
           <div class="face" id="face6"></div>
         </div>
       </div>
-      <div class="project_board">
+      <div class="project_board" id="project_board">
         <div class="project_info">
           <div class="project_skills">
             <ul class="skill_list"></ul>
+            <ul class="skill_list_dummy"></ul>
           </div>
-          <div class="project_content"></div>
+          <div class="project_preview"></div>
+          <div class="project_preview"></div>
         </div>
         <div class="project_list_area">
           <ul class="project_list"></ul>
         </div>
       </div>
     </article>
-    <script src="/src/dice.js"></script>
+    <script type="module" src="/src/dice.js"></script>
     <script type="module" src="/src/project.js"></script>
   </body>
 </html>

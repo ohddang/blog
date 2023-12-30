@@ -1,6 +1,5 @@
 .project_board {
   flex-grow: 1;
-
   width: 70vw;
 }
 
@@ -14,12 +13,13 @@
 }
 
 .project_skills {
+  display: flex;
+  flex-direction: row;
   height: 20%;
   width: 100%;
 }
 
-.project_content {
-  background-color: rgba(200, 200, 200, 0.1);
+.project_preview {
   height: 90%;
   width: 100%;
 }
@@ -50,15 +50,11 @@
   overflow: hidden;
 }
 
-.proejct_item:hover {
-  scale: 1.3;
-}
-
 .project_title {
   background-color: black;
   color: white;
   font-family: "Black Han Sans", sans-serif;
-  font-size: 4rem;
+  font-size: 3rem;
 
   height: auto;
   position: absolute;
@@ -78,6 +74,14 @@
   height: 100%;
 }
 
+.skill_list_dummy {
+  display: flex;
+  flex-direction: column;
+
+  padding: 0;
+  width: 0;
+}
+
 .skill_list {
   display: flex;
   flex-direction: row;
@@ -86,6 +90,7 @@
 
   flex-wrap: wrap;
   gap: 15px;
+  width: 100%;
 }
 
 .skill_item {
