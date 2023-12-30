@@ -1,36 +1,57 @@
-// import { setRandomPositionDice } from "./dice.js";
-
 const skill_list = document.querySelector(".skill_list");
 const skill_list_dummy = document.querySelector(".skill_list_dummy");
 const project_list = document.querySelector(".project_list");
 
-const image_root = "/assets/logo";
+const dice = document.getElementById("dice");
+const drag_panel = document.getElementById("drag_panel");
 
-const css = "css.png";
-const javascript = "javascript.png";
-const nextjs = "nextjs.png";
-const react_query = "reactQuery.png";
-const react = "react.png";
-const redux = "redux.png";
-const styled_components = "styledComponents.png";
-const tailwind = "tailwind.png";
-const threejs = "threejs.png";
-const typescript = "typescript.png";
-const zustand = "zustand.png";
+const body = document.querySelector("body");
+const contents = document.querySelector(".contents");
 
-var logos = [
-  css,
-  javascript,
-  nextjs,
-  react_query,
-  react,
-  redux,
-  styled_components,
-  tailwind,
-  threejs,
-  typescript,
-  zustand,
-];
+let isDragging = false;
+let startMouseX = 0;
+let startMouseY = 0;
+let currentRotationX = -45;
+let currentRotationY = 45;
+let currentPositionX = 0;
+let currentPositionY = 0;
+
+dice.addEventListener("mousedown", startDrag);
+drag_panel.addEventListener("mousedown", startDrag);
+document.addEventListener("mouseup", stopDrag);
+window.addEventListener("resize", onResizeBrowser);
+
+function onResizeBrowser(event) {
+  body.style.height = `${window.outerHeight}px`;
+}
+
+// const image_root = "/assets/logo";
+
+// const css = "css.png";
+// const javascript = "javascript.png";
+// const nextjs = "nextjs.png";
+// const react_query = "reactQuery.png";
+// const react = "react.png";
+// const redux = "redux.png";
+// const styled_components = "styledComponents.png";
+// const tailwind = "tailwind.png";
+// const threejs = "threejs.png";
+// const typescript = "typescript.png";
+// const zustand = "zustand.png";
+
+// var logos = [
+//   css,
+//   javascript,
+//   nextjs,
+//   react_query,
+//   react,
+//   redux,
+//   styled_components,
+//   tailwind,
+//   threejs,
+//   typescript,
+//   zustand,
+// ];
 
 let projectDatas = [];
 
@@ -58,7 +79,7 @@ fetch("json/project.json")
       const project_image = document.createElement("img");
       project_item.appendChild(project_image);
       project_image.classList.add("project_image");
-      project_image.src = item.thumb_url;
+      // project_image.src = item.thumb_url;
 
       project_item.addEventListener("mouseover", (event) =>
         onMouseoverProject(event, project_title)
@@ -75,17 +96,17 @@ fetch("json/project.json")
   });
 
 // logo
-logos.map((logo) => {
-  const skill_item = document.createElement("li");
-  skill_list_dummy.appendChild(skill_item);
+// logos.map((logo) => {
+//   const skill_item = document.createElement("li");
+//   skill_list_dummy.appendChild(skill_item);
 
-  skill_item.setAttribute("id", logo.split(".")[0]);
-  skill_item.classList.add("skill_item");
-  const skill_image = document.createElement("img");
-  skill_item.appendChild(skill_image);
-  skill_image.classList.add("skill_image");
-  skill_image.src = `${image_root}/${logo}`;
-});
+//   skill_item.setAttribute("id", logo.split(".")[0]);
+//   skill_item.classList.add("skill_item");
+//   const skill_image = document.createElement("img");
+//   skill_item.appendChild(skill_image);
+//   skill_image.classList.add("skill_image");
+//   skill_image.src = `${image_root}/${logo}`;
+// });
 
 function onMouseoverProject(event, title) {
   title.classList.add("project_title_slide_up");
@@ -121,29 +142,6 @@ function displayUseSkill(skills) {
 }
 
 function displayPreview() {}
-
-const dice = document.getElementById("dice");
-const drag_panel = document.getElementById("drag_panel");
-
-const body = document.querySelector("body");
-const contents = document.querySelector(".contents");
-
-let isDragging = false;
-let startMouseX = 0;
-let startMouseY = 0;
-let currentRotationX = -45;
-let currentRotationY = 45;
-let currentPositionX = 0;
-let currentPositionY = 0;
-
-dice.addEventListener("mousedown", startDrag);
-drag_panel.addEventListener("mousedown", startDrag);
-document.addEventListener("mouseup", stopDrag);
-window.addEventListener("resize", onResizeBrowser);
-
-function onResizeBrowser(event) {
-  body.style.height = `${window.outerHeight}px`;
-}
 
 setRandomPositionDice();
 
