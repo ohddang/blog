@@ -25,6 +25,8 @@ function onResizeBrowser(event) {
   body.style.height = `${window.outerHeight}px`;
 }
 
+setRandomPositionDice();
+
 // const image_root = "/assets/logo";
 
 // const css = "css.png";
@@ -142,8 +144,6 @@ function displayUseSkill(skills) {
 }
 
 function displayPreview() {}
-
-setRandomPositionDice();
 
 function startDrag(event) {
   isDragging = true;
