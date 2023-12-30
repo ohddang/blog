@@ -1,43 +1,43 @@
 <!DOCTYPE html>
 <html lang="ko">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="modal.css">
-  <title>곤곤 프론트앤드 끄적여보기</title>
-</head>
-<body>
-  <div class="modal" id="modal">
-    <div class="contents_frame" id="contents_frame">
-      <ul class="contents_list" id="contents_list">
-      </ul>
-    </div>
-    <img src ="assets/cross.png" class="modal_close" id="modal_close">
-    <img src ="assets/left-arrow.png" class="prev_arrow" id="prev_arrow">
-    <img src ="assets/right-arrow.png" class="next_arrow" id="next_arrow">    
-  </div>
-  <header>
-    <div class="icon_frame">
-      <img src = "assets/square.png" class="icon" id="square">
-    </div>
-    <div class="icon_frame">
-      <img src = "assets/tetris.png" class="icon icon-game" id="game">
-    </div>
-  </header> 
-  <div class="drag_panel" id="drag_panel">
-    <div class="dice rotate-container" id="dice">
-      <div class="face" id="face1"><a href = "HTML/blog.html" class="dice_font">Black</a></div>
-      <div class="face" id="face2"><a href = "HTML/blog.html" class="dice_font">Black</a></div>
-      <div class="face" id="face3"><a href = "https://ohddang.github.io/react-tetris/tetris" class="dice_font">Tetris</a></div>
-      <div class="face" id="face4"><a href = "https://ohddang.github.io/react-tetris/tetris" class="dice_font">Tetris</a></div>
-      <div class="face" id="face5"><a href = "mission/linkbrary.html" class="dice_font">Normal</a></div>
-      <div class="face" id="face6"><a href = "mission/linkbrary.html" class="dice_font">Normal</a></div>
-    </div>
-  </div>
-  <footer></footer>
-  <script src="main.js"></script>
-  <script type="module" src="portfolio_loader.js"></script>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Noto+Sans+KR:wght@400;700&family=Poppins:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/src/style.css" />
+    <link rel="stylesheet" href="/src/project.css" />
+    <title>곤곤 프론트앤드 끄적여보기</title>
+  </head>
+  <body>
+    <article class="contents">
+      <div class="drag_panel" id="drag_panel">
+        <div class="dice rotate-container" id="dice">
+          <div class="face" id="face1"></div>
+          <div class="face" id="face2"></div>
+          <div class="face" id="face3"></div>
+          <div class="face" id="face4"></div>
+          <div class="face" id="face5"></div>
+          <div class="face" id="face6"></div>
+        </div>
+      </div>
+      <div class="project_board">
+        <div class="project_info">
+          <div class="project_skills">
+            <ul class="skill_list"></ul>
+          </div>
+          <div class="project_content"></div>
+        </div>
+        <div class="project_list_area">
+          <ul class="project_list"></ul>
+        </div>
+      </div>
+    </article>
+    <script src="/src/dice.js"></script>
+    <script type="module" src="/src/project.js"></script>
+  </body>
 </html>
-
