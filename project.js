@@ -27,7 +27,7 @@ function onResizeBrowser(event) {
 
 setRandomPositionDice();
 
-const image_root = "../assets/logo";
+const image_root = "assets/logo";
 
 const css = "css.png";
 const javascript = "javascript.png";
