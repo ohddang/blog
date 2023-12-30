@@ -27,33 +27,33 @@ function onResizeBrowser(event) {
 
 setRandomPositionDice();
 
-// const image_root = "/assets/logo";
+const image_root = "/assets/logo";
 
-// const css = "css.png";
-// const javascript = "javascript.png";
-// const nextjs = "nextjs.png";
-// const react_query = "reactQuery.png";
-// const react = "react.png";
-// const redux = "redux.png";
-// const styled_components = "styledComponents.png";
-// const tailwind = "tailwind.png";
-// const threejs = "threejs.png";
-// const typescript = "typescript.png";
-// const zustand = "zustand.png";
+const css = "css.png";
+const javascript = "javascript.png";
+const nextjs = "nextjs.png";
+const react_query = "reactQuery.png";
+const react = "react.png";
+const redux = "redux.png";
+const styled_components = "styledComponents.png";
+const tailwind = "tailwind.png";
+const threejs = "threejs.png";
+const typescript = "typescript.png";
+const zustand = "zustand.png";
 
-// var logos = [
-//   css,
-//   javascript,
-//   nextjs,
-//   react_query,
-//   react,
-//   redux,
-//   styled_components,
-//   tailwind,
-//   threejs,
-//   typescript,
-//   zustand,
-// ];
+var logos = [
+  css,
+  javascript,
+  nextjs,
+  react_query,
+  react,
+  redux,
+  styled_components,
+  tailwind,
+  threejs,
+  typescript,
+  zustand,
+];
 
 let projectDatas = [];
 
@@ -81,7 +81,7 @@ fetch("json/project.json")
       const project_image = document.createElement("img");
       project_item.appendChild(project_image);
       project_image.classList.add("project_image");
-      // project_image.src = item.thumb_url;
+      project_image.src = item.thumb_url;
 
       project_item.addEventListener("mouseover", (event) =>
         onMouseoverProject(event, project_title)
@@ -98,17 +98,17 @@ fetch("json/project.json")
   });
 
 // logo
-// logos.map((logo) => {
-//   const skill_item = document.createElement("li");
-//   skill_list_dummy.appendChild(skill_item);
+logos.map((logo) => {
+  const skill_item = document.createElement("li");
+  skill_list_dummy.appendChild(skill_item);
 
-//   skill_item.setAttribute("id", logo.split(".")[0]);
-//   skill_item.classList.add("skill_item");
-//   const skill_image = document.createElement("img");
-//   skill_item.appendChild(skill_image);
-//   skill_image.classList.add("skill_image");
-//   skill_image.src = `${image_root}/${logo}`;
-// });
+  skill_item.setAttribute("id", logo.split(".")[0]);
+  skill_item.classList.add("skill_item");
+  const skill_image = document.createElement("img");
+  skill_item.appendChild(skill_image);
+  skill_image.classList.add("skill_image");
+  skill_image.src = `${image_root}/${logo}`;
+});
 
 function onMouseoverProject(event, title) {
   title.classList.add("project_title_slide_up");
