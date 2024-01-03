@@ -1,6 +1,8 @@
 const project_list = document.querySelector(".project_list");
 
 const dice = document.getElementById("dice");
+const inner_dice = document.querySelector(".inner_dice");
+
 const drag_panel = document.getElementById("drag_panel");
 
 const body = document.querySelector("body");
@@ -10,6 +12,7 @@ const drop_down = document.getElementById("drop_down");
 const drop_down_area = document.getElementById("drop_down_area");
 const projects_area = document.getElementById("projects_area");
 const faces = document.querySelectorAll(".face");
+const inner_faces = document.querySelectorAll(".inner_face");
 
 let isDragging = false;
 let startMouseX = 0;
@@ -161,7 +164,7 @@ function dragDice(event) {
 function stopDrag() {
   if (isDragging) {
     isDragging = false;
-    updateContentsColor();
+    updateStyleColor();
   }
 }
 
@@ -176,24 +179,30 @@ setInterval(() => {
   currentRotationY %= 360;
 
   rotateDice(currentRotationX, currentRotationY);
-  updateContentsColor();
+  updateStyleColor();
 }, 500);
 
 function translateDice(newX, newY) {
   currentPositionX = newX;
   currentPositionY = newY;
-  dice.style.transform = `translateX(${currentPositionX}px) translateY(${currentPositionY}px) rotateX(${currentRotationX}deg) rotateY(${currentRotationY}deg)`;
+  updateStyleTransform();
 }
 
 function rotateDice(newX, newY) {
   currentRotationX = newX;
   currentRotationY = newY;
-  dice.style.transform = `translateX(${currentPositionX}px) translateY(${currentPositionY}px) rotateX(${currentRotationX}deg) rotateY(${currentRotationY}deg)`;
+  updateStyleTransform();
 }
 
-function updateContentsColor() {
-  const brightness = 70;
-  const diceBrightness = 100;
+function updateStyleTransform() {
+  dice.style.transform = `translateX(${currentPositionX}px) translateY(${currentPositionY}px) rotateX(${currentRotationX}deg) rotateY(${currentRotationY}deg)`;
+  inner_dice.style.transform = `rotateX(${currentRotationX + 45}deg) rotateY(${
+    currentRotationY + 45
+  }deg)`;
+}
+
+function updateStyleColor() {
+  const brightness = 0;
   contents.style.backgroundColor = `rgba(${
     (currentRotationX % 256) + brightness
   }, ${(currentRotationY % 256) + brightness}, ${
@@ -205,6 +214,14 @@ function updateContentsColor() {
       (currentRotationX % 256) + brightness
     }, ${(currentRotationY % 256) + brightness}, ${
       ((currentRotationX + currentRotationY) % 256) + brightness
-    }, 0.6)`;
+    }, 0.4)`;
+  });
+
+  inner_faces.forEach((face) => {
+    face.style.backgroundColor = `rgba(${
+      (currentRotationX % 256) + brightness
+    }, ${(currentRotationY % 256) + brightness}, ${
+      ((currentRotationX + currentRotationY) % 256) + brightness
+    }, 0.4)`;
   });
 }

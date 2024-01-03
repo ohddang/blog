@@ -42,7 +42,11 @@ div {
   height: 100%;
 }
 
-.dice {
+.dice:active {
+  cursor: grabbing;
+}
+
+.dice_shpae {
   width: 200px;
   height: 200px;
   position: relative;
@@ -51,14 +55,7 @@ div {
   transition: transform 1s linear;
 }
 
-.dice:active {
-  cursor: grabbing;
-}
-
-.dice > * {
-}
-
-.face {
+.dice_shpae > * {
   width: 200px;
   height: 200px;
   position: absolute;
@@ -70,22 +67,45 @@ div {
 }
 
 #face1 {
-  transform: rotateX(90deg) translateZ(130px);
+  transform: rotateX(90deg) translateZ(125px);
 }
 #face2 {
-  transform: rotateY(90deg) translateZ(130px);
+  transform: rotateY(90deg) translateZ(125px);
 }
 #face3 {
-  transform: rotateY(180deg) translateZ(130px);
+  transform: rotateY(180deg) translateZ(125px);
 }
 #face4 {
-  transform: rotateY(-90deg) translateZ(130px);
+  transform: rotateY(-90deg) translateZ(125px);
 }
 #face5 {
-  transform: rotateX(-90deg) translateZ(130px);
+  transform: rotateX(-90deg) translateZ(125px);
 }
 #face6 {
-  transform: rotateY(0deg) translateZ(130px);
+  transform: rotateY(0deg) translateZ(125px);
+}
+
+.inner_dice {
+  transition: transform 1s linear;
+}
+
+#inner_face1 {
+  transform: rotateX(90deg) translateZ(60px) scale(0.5);
+}
+#inner_face2 {
+  transform: rotateY(90deg) translateZ(60px) scale(0.5);
+}
+#inner_face3 {
+  transform: rotateY(180deg) translateZ(60px) scale(0.5);
+}
+#inner_face4 {
+  transform: rotateY(-90deg) translateZ(60px) scale(0.5);
+}
+#inner_face5 {
+  transform: rotateX(-90deg) translateZ(60px) scale(0.5);
+}
+#inner_face6 {
+  transform: rotateY(0deg) translateZ(60px) scale(0.5);
 }
 
 /** drop_down **/
