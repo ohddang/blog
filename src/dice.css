@@ -43,8 +43,8 @@ div {
 }
 
 .dice {
-  width: 150px;
-  height: 150px;
+  width: 200px;
+  height: 200px;
   position: relative;
   transform-style: preserve-3d;
   cursor: grab;
@@ -56,38 +56,36 @@ div {
 }
 
 .dice > * {
-  outline: 1px solid rgba(0, 0, 0, 0.1);
-  box-shadow: 5px 5px 24px black;
-  background-color: rgba(255, 255, 255 0.01);
 }
 
 .face {
-  width: 150px;
-  height: 150px;
+  width: 200px;
+  height: 200px;
   position: absolute;
   border: none;
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: background-color 0.5s ease-in-out;
 }
 
 #face1 {
-  transform: rotateX(90deg) translateZ(75px);
+  transform: rotateX(90deg) translateZ(130px);
 }
 #face2 {
-  transform: rotateY(90deg) translateZ(75px);
+  transform: rotateY(90deg) translateZ(130px);
 }
 #face3 {
-  transform: rotateY(180deg) translateZ(75px);
+  transform: rotateY(180deg) translateZ(130px);
 }
 #face4 {
-  transform: rotateY(-90deg) translateZ(75px);
+  transform: rotateY(-90deg) translateZ(130px);
 }
 #face5 {
-  transform: rotateX(-90deg) translateZ(75px);
+  transform: rotateX(-90deg) translateZ(130px);
 }
 #face6 {
-  transform: rotateY(0deg) translateZ(75px);
+  transform: rotateY(0deg) translateZ(130px);
 }
 
 /** drop_down **/

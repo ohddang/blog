@@ -9,6 +9,7 @@ const contents = document.querySelector(".contents");
 const drop_down = document.getElementById("drop_down");
 const drop_down_area = document.getElementById("drop_down_area");
 const projects_area = document.getElementById("projects_area");
+const faces = document.querySelectorAll(".face");
 
 let isDragging = false;
 let startMouseX = 0;
@@ -192,9 +193,18 @@ function rotateDice(newX, newY) {
 
 function updateContentsColor() {
   const brightness = 70;
+  const diceBrightness = 100;
   contents.style.backgroundColor = `rgba(${
     (currentRotationX % 256) + brightness
   }, ${(currentRotationY % 256) + brightness}, ${
     ((currentRotationX + currentRotationY) % 256) + brightness
   }, 0.6)`;
+
+  faces.forEach((face) => {
+    face.style.backgroundColor = `rgba(${
+      (currentRotationX % 256) + brightness
+    }, ${(currentRotationY % 256) + brightness}, ${
+      ((currentRotationX + currentRotationY) % 256) + brightness
+    }, 0.6)`;
+  });
 }
