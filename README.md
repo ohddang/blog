@@ -1,4 +1,4 @@
-# <p align="center">포트폴리오 모아보기</p>
+# <p align="center">This is FE</p>
 
 <p align="center"><img src="https://github.com/ohddang/this-is-FE/assets/68732996/7a4fb741-3730-495e-9883-ae2a24c90376" width="500" /></p>
 
@@ -7,7 +7,8 @@
 <br/>
 
 ## 📖 주요기능
-* 큐브를 가지고 놀 수 있음
+* 큐브를 가지고 놀 수 있음  
+* 🖱️ 더블클릭, 드래그
 <br/>
 
 ## ✏ 기술스택
@@ -15,5 +16,6 @@
 <br/>
 
 ## 🎮 배포 주소
-> [This-is-FE 바로가기](https://ohddang.github.io/This-is-FE/)  
+> [This-is-FE 바로가기](https://ohddang.github.io/this-is-FE/)  
 <br/>
+
