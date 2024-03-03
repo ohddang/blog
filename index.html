@@ -7,8 +7,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Noto+Sans+KR:wght@400;700&family=Poppins:wght@400;600&display=swap"
-      rel="stylesheet"
-    />
+      rel="stylesheet" />
     <link rel="stylesheet" href="src/dice.css" />
     <title>곤곤 프론트앤드 끄적여보기</title>
   </head>
@@ -32,16 +31,19 @@
           </div>
         </div>
       </div>
-      <div
-        class="drop_down"
-        id="drop_down"
-        style="background-image: url('assets/icon/projects.png')"
-      ></div>
+      <div id="webgl_container"></div>
+      <div class="drop_down" id="drop_down" style="background-image: url('assets/icon/projects.png')"></div>
+      <div class="dimension_button_container">
+        <div id="dim_2" class="dimension_button">2D</div>
+        <div id="dim_3" class="dimension_button">3D</div>
+      </div>
       <div class="drop_down_area" id="drop_down_area"></div>
       <div class="projects_area" id="projects_area">
         <ul class="project_list"></ul>
       </div>
     </article>
-    <script src="dice.js"></script>
+    <script src="src/dice.js"></script>
+    <script src="src/projects.js"></script>
+    <script type="module" src="src/threeView.js" defer></script>
   </body>
 </html>
