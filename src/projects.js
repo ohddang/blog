@@ -1,5 +1,8 @@
-drop_down.addEventListener("click", onClickDropDown);
-drop_down_area.addEventListener("click", onClickDropDown);
+const project_list = document.querySelector(".project_list");
+const project_link = document.getElementById("project_link");
+const home_icon = document.getElementById("home_icon");
+const github_icon = document.getElementById("github_icon");
+const select_title = document.getElementById("select_title");
 
 const image_root = "assets/logo";
 
@@ -29,22 +32,33 @@ var logos = [
   zustand,
 ];
 
-function onMouseoverProject(event, title) {
+let current_item_id = "";
+let current_url = "";
+let current_github = "";
+
+const onMouseoverProject = (event, title) => {
   title.classList.add("project_title_slide_up");
-}
+};
 
-function onMouseoutProject(event, title) {
+const onMouseoutProject = (event, title) => {
   title.classList.remove("project_title_slide_up");
-}
+};
 
-function onClickProject(event, id) {
-  projectDatas.map((item) => {
-    if (item.id === id) {
-    }
+const onClickProject = (event, id) => {
+  if ("" === current_item_id) {
+    home_icon.style.opacity = "1.0";
+    github_icon.style.opacity = "1.0";
+  }
+
+  const find = projectDatas.find((item) => {
+    select_title.textContent = item.title;
+    current_url = item.url;
+    current_github = item.github;
+    return item.id === id;
   });
-}
+};
 
-function onClickDropDown() {
+const onClickDropDown = () => {
   if (drop_down_area.classList.contains("slide_down")) {
     drop_down_area.classList.remove("slide_down");
   } else {
@@ -56,7 +70,21 @@ function onClickDropDown() {
   } else {
     projects_area.classList.add("slide_down_projects");
   }
-}
+};
+
+const onClickHomePage = () => {
+  if ("" !== current_url) window.open(current_url, "_blank");
+};
+
+const onClickGithubPage = () => {
+  if ("" !== current_github) window.open(current_github, "_blank");
+};
+
+drop_down.addEventListener("click", onClickDropDown);
+drop_down_area.addEventListener("click", onClickDropDown);
+
+home_icon.addEventListener("click", onClickHomePage);
+github_icon.addEventListener("click", onClickGithubPage);
 
 let projectDatas = [];
 fetch("json/project.json")

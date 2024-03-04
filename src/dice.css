@@ -171,6 +171,9 @@ div {
 }
 
 .drop_down_area {
+  display: flex;
+  flex-direction: column;
+
   position: absolute;
   backdrop-filter: blur(10px);
   background: transparent;
@@ -248,4 +251,49 @@ div {
 .project_image {
   width: 100%;
   height: 100%;
+}
+
+.project_link {
+  top: 100%;
+  left: 0;
+
+  position: relative;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+
+  gap: 20px;
+  margin: 25px;
+
+  transform-origin: 50% 0;
+}
+
+.project_link_slide_down {
+  top: 100%;
+  transform: scale(1);
+}
+
+.project_link > p {
+  font-size: 3.8rem;
+  font-family: "Black Han Sans", sans-serif;
+
+  display: flex;
+  align-items: center;
+}
+
+.project_link > div {
+  display: flex;
+  flex-direction: row;
+
+  gap: 20px;
+}
+
+.project_link > div > img {
+  width: 80px;
+  height: 80px;
+  opacity: 0.5;
+
+  cursor: pointer;
 }

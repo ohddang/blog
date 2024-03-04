@@ -1,5 +1,3 @@
-const project_list = document.querySelector(".project_list");
-
 const dice = document.getElementById("dice");
 const inner_dice = document.querySelector(".inner_dice");
 
