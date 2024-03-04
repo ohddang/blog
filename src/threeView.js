@@ -17,6 +17,13 @@ class App {
     const scene = new THREE.Scene();
     this._scene = scene;
 
+    this._cubeArray = [];
+    this._currentCubeIndex = 0;
+    this._turn = false;
+    this._lookCurrToNextBeginlerp = 0;
+    this._lookDirectionlerp = 0;
+    this._lookAtlerp = 0;
+
     /* 밑줄로 시작하는 field 와 method는 App 클래스 내부에서만 사용된다는 의미로 씀.
 		javascript에서는 private 성격을 부여할 수 있는 기능이 없기 때문에 이와 같이 밑줄로 표현하는것이 개발자간의 약속이다) */
     this._setupCamera();
@@ -47,24 +54,39 @@ class App {
     const color = 0xffffff;
     const intensity = 1;
     /* 광원 객체 생성 */
-    const light = new THREE.DirectionalLight(color, intensity);
-    light.position.set(-1, 2, 4);
-    this._scene.add(light);
+    const position = [
+      { x: 100, y: 100, z: 100 },
+      { x: -100, y: -100, z: -100 },
+    ];
+
+    for (let i = 0; i < position.length; i++) {
+      const light = new THREE.DirectionalLight(color, intensity);
+      light.position.set(position[i].x, position[i].y, position[i].z);
+
+      this._scene.add(light);
+    }
   }
 
   /* 파란색 정육면체 mesh를 생성하는 method */
   _setupModel() {
-    /* 형태 : BoxGeometry(가로, 세로, 깊이) */
-    const geometry = new THREE.BoxGeometry(1, 1, 1);
-    /* 재질 */
-    const material = new THREE.MeshPhongMaterial({ color: 0x44a88 });
+    for (let i = 0; i < 100; ++i) {
+      const size = Math.random() * 4;
+      const geometry = new THREE.BoxGeometry(size, size, size);
+      /* 재질 */
+      // random color
+      const material = new THREE.MeshPhongMaterial({ color: Math.random() * 0xffffff });
 
-    /* mesh 생성 */
-    const cube = new THREE.Mesh(geometry, material);
+      /* mesh 생성 */
+      const cube = new THREE.Mesh(geometry, material);
 
-    /* scene 객체의 구성요소로 추가 */
-    this._scene.add(cube);
-    this._cube = cube;
+      cube.position.set(Math.random() * 100 - 50, Math.random() * 100 - 50, Math.random() * 100 - 50);
+      cube.speed = Math.random() * 20;
+      /* scene 객체의 구성요소로 추가 */
+      this._scene.add(cube);
+
+      this._cubeArray.push(cube);
+    }
+    this._camera.lookAt(this._cubeArray[this._currentCubeIndex].position);
   }
 
   resize() {
@@ -81,7 +103,7 @@ class App {
 
   /* time : requestAnimationFrame 가 render 함수에 전달해주는 값 */
   render(time) {
-    this._renderer.setClearColor(0x000000);
+    this._renderer.setClearColor(0x808080);
     /* renderer 가 scene 을 카메라 시점으로 렌더링하도록 함 */
     this._renderer.render(this._scene, this._camera);
     /* time 인자 : 렌더링이 처음 시작된 이후 경과된 시간값. millisecond unit */
@@ -91,10 +113,49 @@ class App {
   }
 
   update(time) {
-    time *= 0.001; // second unit
-    /* 정육면체의 회전 값에 time 값을 지정 */
-    this._cube.rotation.x = time;
-    this._cube.rotation.y = time;
+    time *= 0.0005;
+
+    this._cubeArray.forEach((cube, index) => {
+      cube.rotation.x = cube.speed * time;
+      cube.rotation.y = cube.speed * time;
+
+      if (index === this._currentCubeIndex) {
+        if (this._turn) {
+          const targetCube = this._cubeArray[(this._currentCubeIndex + 1) % this._cubeArray.length];
+
+          const currentLookAt = cube.position;
+          const targetLookAt = targetCube.position;
+
+          this._lookAtlerp += 0.005;
+          if (this._lookAtlerp > 1) this._lookAtlerp = 1;
+
+          const newLookAt = new THREE.Vector3().lerpVectors(currentLookAt, targetLookAt, this._lookAtlerp);
+
+          this._camera.lookAt(newLookAt);
+
+          if (this._lookAtlerp === 1) {
+            this._lookAtlerp = 0;
+            this._turn = false;
+            this._currentCubeIndex = (this._currentCubeIndex + 1) % this._cubeArray.length;
+          }
+        } else {
+          const dx = this._camera.position.x - cube.position.x;
+          const dy = this._camera.position.y - cube.position.y;
+          const dz = this._camera.position.z - cube.position.z;
+
+          const length = Math.sqrt(dx * dx + dy * dy + dz * dz);
+
+          if (length < 3) {
+            this._turn = true;
+          }
+          this._camera.lookAt(cube.position);
+
+          this._camera.position.x -= (dx / length) * 0.1;
+          this._camera.position.y -= (dy / length) * 0.1;
+          this._camera.position.z -= (dz / length) * 0.1;
+        }
+      }
+    });
   }
 }
 
