@@ -103,7 +103,7 @@ class App {
 
   /* time : requestAnimationFrame 가 render 함수에 전달해주는 값 */
   render(time) {
-    this._renderer.setClearColor(0x808080);
+    this._renderer.setClearColor(0xf0f0bb);
     /* renderer 가 scene 을 카메라 시점으로 렌더링하도록 함 */
     this._renderer.render(this._scene, this._camera);
     /* time 인자 : 렌더링이 처음 시작된 이후 경과된 시간값. millisecond unit */
