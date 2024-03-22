@@ -123,7 +123,7 @@ function updateStyleColor() {
 
 // 실행
 
-dim_2.classList.add("select_button");
+dim_3.classList.add("select_button");
 
 setInterval(() => {
   currentRotationX += 3;

@@ -161,5 +161,5 @@ class App {
 
 window.onload = function () {
   new App();
-  webgl_container.style.display = "none";
+  webgl_container.style.display = "block";
 };
