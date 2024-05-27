@@ -1,21 +1,30 @@
-# <p align="center">This is FE</p>
+# React + TypeScript + Vite
 
-<p align="center"><img src="https://github.com/ohddang/this-is-FE/assets/68732996/7a4fb741-3730-495e-9883-ae2a24c90376" width="500" /></p>
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-## 🔍 프로젝트 정보
-* 여러 포트폴리오를 볼 수 있는 홈페이지  
-<br/>
+Currently, two official plugins are available:
 
-## 📖 주요기능
-* 큐브를 가지고 놀 수 있음  
-* 🖱️ 더블클릭, 드래그
-<br/>
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-## ✏ 기술스택
-<img src="https://img.shields.io/badge/javascript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black"> <img src="https://img.shields.io/badge/css-1572B6?style=for-the-badge&logo=css3&logoColor=white">  
-<br/>
+## Expanding the ESLint configuration
 
-## 🎮 배포 주소
-> [This-is-FE 바로가기](https://ohddang.github.io/this-is-FE/)  
-<br/>
+If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
 
+- Configure the top-level `parserOptions` property like this:
+
+```js
+export default {
+  // other rules...
+  parserOptions: {
+    ecmaVersion: 'latest',
+    sourceType: 'module',
+    project: ['./tsconfig.json', './tsconfig.node.json'],
+    tsconfigRootDir: __dirname,
+  },
+}
+```
+
+- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
+- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
+- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list

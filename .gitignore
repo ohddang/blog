@@ -1,8 +1,24 @@
-react-tetris/package.json
-react-tetris/package-lock.json
-react-tetris/README.md
-react-tetris/yarn.lock
-react-tetris/public/
-react-tetris/src/
-react-tetris/.gitignore
-node_modules/
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+node_modules
+dist
+dist-ssr
+*.local
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?

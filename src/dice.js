@@ -1,21 +1,3 @@
-const dice = document.getElementById("dice");
-const inner_dice = document.querySelector(".inner_dice");
-
-const drag_panel = document.getElementById("drag_panel");
-const webgl_container = document.getElementById("webgl_container");
-
-const body = document.querySelector("body");
-const contents = document.querySelector(".contents");
-
-const drop_down = document.getElementById("drop_down");
-const drop_down_area = document.getElementById("drop_down_area");
-const projects_area = document.getElementById("projects_area");
-const faces = document.querySelectorAll(".face");
-const inner_faces = document.querySelectorAll(".inner_face");
-
-const dim_2 = document.getElementById("dim_2");
-const dim_3 = document.getElementById("dim_3");
-
 let isDragging = false;
 let startMouseX = 0;
 let startMouseY = 0;
