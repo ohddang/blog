@@ -9,6 +9,7 @@ import QABoard from "./components/QABoard";
 import DashBoard from "./components/dashboard";
 import Chatting from "./components/Chatting";
 import Chartjs from "./components/Chartjs";
+import Home from "./components/Home";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
       <section className="w-full h-full flex flex-row gap-1 bg-gray-500/10">
         <SideBar />
         <Routes>
+          <Route path="/" element={<Home />} />
           <Route path="/cube" element={<Cube />} />
           <Route path="/3dview" element={<ThreeDView />} />
           <Route path="/coin" element={<Coin />} />
