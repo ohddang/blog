@@ -9,7 +9,7 @@ export default function ThreeDView() {
     const currentRef = ref.current;
 
     const scene = new THREE.Scene();
-    scene.background = new THREE.Color(0xdddddd);
+    scene.background = new THREE.Color(0xf0f0f0);
     const camera = new THREE.PerspectiveCamera(75, (window.innerWidth - 192) / window.innerHeight, 0.1, 1000);
     const renderer = new THREE.WebGLRenderer();
 
@@ -105,5 +105,16 @@ export default function ThreeDView() {
     };
   }, []);
 
-  return <div className="w-full h-screen min-h-screen" ref={ref} />;
+  return (
+    <div className="w-full h-screen relative">
+      <div className="w-full h-screen min-h-screen" ref={ref} />
+      <div className="text-4xl font-bold absolute top-8 left-8 z-10">
+        <div className="rounded p-2 bg-white/50 flex flex-col gap-5">
+          <h1>Forward : W</h1>
+          <h1>Backward : S</h1>
+          <h1>Rotation : ⬅️⬆️⬇️➡️</h1>
+        </div>
+      </div>
+    </div>
+  );
 }
