@@ -4,13 +4,14 @@ import * as THREE from "three";
 export default function ThreeDView() {
   const ref = useRef<HTMLDivElement>(null);
   const cubes: THREE.Mesh[] = [];
+  const sidebarWidth = 196;
 
   useEffect(() => {
     const currentRef = ref.current;
 
     const scene = new THREE.Scene();
     scene.background = new THREE.Color(0xf0f0f0);
-    const camera = new THREE.PerspectiveCamera(75, (window.innerWidth - 192) / window.innerHeight, 0.1, 1000);
+    const camera = new THREE.PerspectiveCamera(75, (window.innerWidth - sidebarWidth) / window.innerHeight, 0.1, 1000);
     const renderer = new THREE.WebGLRenderer();
 
     const keyState: { [key: string]: boolean } = {};
@@ -56,7 +57,7 @@ export default function ThreeDView() {
     let animationId: number;
     const animate = function () {
       animationId = requestAnimationFrame(animate);
-      renderer.setSize(window.innerWidth - 192, window.innerHeight);
+      renderer.setSize(window.innerWidth - sidebarWidth, window.innerHeight);
 
       const speed = 0.2;
       const rotationSpeed = 0.03;
@@ -83,10 +84,10 @@ export default function ThreeDView() {
     animate();
 
     window.addEventListener("resize", () => {
-      camera.aspect = (window.innerWidth - 192) / window.innerHeight;
+      camera.aspect = (window.innerWidth - sidebarWidth) / window.innerHeight;
       camera.updateProjectionMatrix();
 
-      renderer.setSize(window.innerWidth - 192, window.innerHeight);
+      renderer.setSize(window.innerWidth - sidebarWidth, window.innerHeight);
     });
 
     window.addEventListener("keydown", function (event) {
