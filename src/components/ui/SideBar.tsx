@@ -2,11 +2,12 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 
 const LinkList = [
-  { name: "Dice", path: "/dice" },
+  { name: "Cube", path: "/cube" },
   { name: "3D View", path: "/3dview" },
   { name: "Tetris", path: "/tetris" },
   { name: "Whiteboard", path: "/whiteboard" },
   { name: "Coin Alram", path: "/coin" },
+  { name: "Chartjs", path: "/chartjs" },
   { name: "Q&A Board", path: "/qaboard" },
   { name: "DashBoard", path: "/dashboard" },
   { name: "Chatting", path: "/chatting" },
@@ -19,7 +20,7 @@ export default function SideBar() {
     "w-full h-12 flex justify-center items-center text-black font-noto-sans-kr rounded hover:bg-gray-500/10";
 
   return (
-    <div className="w-48 h-full p-2 flex flex-col gap-2 bg-gray font-noto-sans-kr">
+    <div className="w-48 h-screen p-2 flex flex-col gap-2 bg-white font-noto-sans-kr">
       {LinkList.map((link) => (
         <>
           {link.name === "border" ? (

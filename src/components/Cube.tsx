@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 
-const Dice: React.FC = () => {
+const Cube: React.FC = () => {
   const diceRef = useRef<HTMLDivElement>(null);
   const panelRef = useRef<HTMLDivElement>(null);
   const [rotationX, setRotationX] = useState<number>(0);
@@ -54,7 +54,7 @@ const Dice: React.FC = () => {
     <div
       className="flex flex-col w-full justify-center items-center h-screen min-h-screen bg-gray-500/10 relative"
       ref={panelRef}>
-      <h1 className="text-4xl font-bold absolute top-10 left-10 animate-bounce z-10">Touch Dice</h1>
+      <h1 className="text-4xl font-bold absolute top-10 left-10 animate-bounce z-10">Touch Cube</h1>
       <div
         id="dice"
         className="w-48 h-48 relative"
@@ -77,4 +77,4 @@ const Dice: React.FC = () => {
   );
 };
 
-export default Dice;
+export default Cube;
