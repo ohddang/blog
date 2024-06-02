@@ -52,7 +52,7 @@ const Cube: React.FC = () => {
 
   return (
     <div
-      className="flex flex-col w-full justify-center items-center h-screen min-h-screen bg-gray-500/10 relative"
+      className="flex flex-col w-full justify-center items-center h-screen min-h-screen bg-gray-100 relative"
       ref={panelRef}>
       <h1 className="text-4xl font-bold absolute top-10 left-10 animate-bounce z-10">Touch Cube</h1>
       <div

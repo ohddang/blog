@@ -25,7 +25,7 @@ const etc = ["logo/docker.png", "logo/jest.svg", "logo/terraform.png"];
 
 export default function Home() {
   return (
-    <div className="flex flex-col p-10 gap-14">
+    <div className="w-full flex flex-col p-10 gap-14 bg-gray-100">
       <div className="flex flex-col gap-5">
         <div className="text-3xl font-noto-sans-kr font-bold">FrontEnd</div>
         <div className="flex flex-row gap-5">

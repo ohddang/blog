@@ -14,7 +14,7 @@ import Home from "./components/Home";
 function App() {
   return (
     <BrowserRouter basename="/this-is-me">
-      <section className="w-full h-full flex flex-row gap-1 bg-gray-500/10">
+      <section className="w-full h-full flex flex-row gap-1 bg-gray-100">
         <SideBar />
         <Routes>
           <Route path="/" element={<Home />} />
