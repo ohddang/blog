@@ -20,7 +20,7 @@ export default function SideBar() {
     "w-full h-12 flex justify-center items-center text-black font-noto-sans-kr rounded hover:bg-gray-500/10";
 
   return (
-    <div className="w-48 h-screen p-2 flex flex-col gap-2 bg-white font-noto-sans-kr">
+    <div className="w-48 min-w-48 h-screen p-2 flex flex-col gap-2 bg-white font-noto-sans-kr">
       {LinkList.map((link) => (
         <>
           {link.name === "border" ? (
