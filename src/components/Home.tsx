@@ -8,7 +8,6 @@ const frontend = [
   "logo/reactQuery.png",
   "logo/redux.png",
   "logo/zustand.png",
-  "logo/threejs.png",
 ];
 
 const backend = [
@@ -21,7 +20,7 @@ const backend = [
   "logo/typeorm.svg",
 ];
 
-const etc = ["logo/docker.png", "logo/jest.svg", "logo/terraform.png"];
+const etc = ["logo/docker.png"];
 
 export default function Home() {
   return (
