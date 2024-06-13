@@ -52,8 +52,9 @@ const Cube: React.FC = () => {
 
   return (
     <div
-      className="flex flex-col w-full justify-center items-center h-screen min-h-screen bg-gray-100 relative"
-      ref={panelRef}>
+      className="w-full flex flex-col  justify-center items-center h-screen min-h-screen bg-gray-100 relative"
+      ref={panelRef}
+    >
       <h1 className="text-4xl font-bold absolute top-10 left-10 animate-bounce z-10">Touch Cube</h1>
       <div
         id="dice"
@@ -63,14 +64,16 @@ const Cube: React.FC = () => {
         style={{
           transform: `translateX(${positionX}px) translateY(${positionY}px) rotateX(${rotationX}deg) rotateY(${rotationY}deg)`,
           transformStyle: "preserve-3d",
-        }}>
+        }}
+      >
         <div className="w-36 h-36 bg-blue-500 absolute" style={{ transform: "rotateY(90deg) translateZ(72px)" }}></div>
         <div className="w-36 h-36 bg-blue-500 absolute" style={{ transform: "rotateY(-90deg) translateZ(72px)" }}></div>
         <div className="w-36 h-36 bg-red-500 absolute" style={{ transform: "rotateX(90deg) translateZ(72px)" }}></div>
         <div className="w-36 h-36 bg-red-500 absolute" style={{ transform: "rotateX(-90deg) translateZ(72px)" }}></div>
         <div
           className="w-36 h-36 bg-green-500 absolute"
-          style={{ transform: "rotateY(180deg) translateZ(72px)" }}></div>
+          style={{ transform: "rotateY(180deg) translateZ(72px)" }}
+        ></div>
         <div className="w-36 h-36 bg-green-500 absolute" style={{ transform: "rotateY(0deg) translateZ(72px)" }}></div>
       </div>
     </div>

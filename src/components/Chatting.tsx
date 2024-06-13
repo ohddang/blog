@@ -8,8 +8,9 @@ export default function Chatting() {
       </div>
       <img className="w-2/3 h-2/3" src="background/chatting.png" />
       <button
-        className="text-4xl font-bold absolute bottom-10 right-10 z-10"
-        onClick={() => window.open("https://github.com/Codeit-part4-team3", "_blank")}>
+        className="fixed w-10 h-10 text-4xl font-bold bottom-10 right-10 z-10"
+        onClick={() => window.open("https://github.com/Codeit-part4-team3", "_blank")}
+      >
         <img className="w-10 h-10" src="logo/github.png" />
       </button>
     </div>

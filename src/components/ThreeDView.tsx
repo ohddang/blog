@@ -4,7 +4,7 @@ import * as THREE from "three";
 export default function ThreeDView() {
   const ref = useRef<HTMLDivElement>(null);
   const cubes: THREE.Mesh[] = [];
-  const sidebarWidth = 196;
+  const sidebarWidth = 224;
 
   useEffect(() => {
     const currentRef = ref.current;

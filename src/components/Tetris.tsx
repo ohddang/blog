@@ -7,8 +7,9 @@ export default function Tetris() {
         <h1>Rotation : ⬆️</h1>
       </div>
       <button
-        className="text-4xl font-bold absolute bottom-10 right-10 z-10"
-        onClick={() => window.open("https://github.com/ohddang/react-tetris", "_blank")}>
+        className="fixed w-10 h-10 text-4xl font-bold bottom-10 right-10 z-10"
+        onClick={() => window.open("https://github.com/ohddang/react-tetris", "_blank")}
+      >
         <img className="w-10 h-10" src="logo/github.png" />
       </button>
     </div>
