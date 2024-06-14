@@ -3,16 +3,38 @@ import { useEffect, useRef, useState } from "react";
 interface CardProps {
   url: string;
   size: "sm" | "md" | "lg";
+  isSquare?: boolean;
   children?: React.ReactNode;
 }
 
 export default function Card(props: CardProps) {
   const cardRef = useRef<HTMLImageElement>(null);
-  const [cardScale, setCardScale] = useState<number>(0);
+  const [cardScale, setCardScale] = useState<string>("scale-0");
   const [bgColor, setBgColor] = useState<string>("");
 
-  const width = props.size === "sm" ? "w-72" : props.size === "md" ? "w-1/2" : "w-lg";
-  const height = props.size === "sm" ? "h-96" : props.size === "md" ? "h-5/6" : "h-lg";
+  let width = props.isSquare
+    ? props.size === "sm"
+      ? "w-square-sm"
+      : props.size === "md"
+      ? "w-sqaure-md"
+      : "w-square-lg"
+    : props.size === "sm"
+    ? "w-20"
+    : props.size === "md"
+    ? "w-1/2"
+    : "w-rect-lg";
+  let height = props.isSquare
+    ? props.size === "sm"
+      ? "h-square-sm"
+      : props.size === "md"
+      ? "h-square-md"
+      : "h-square-lg"
+    : props.size === "sm"
+    ? "h-32"
+    : props.size === "md"
+    ? "h-5/6"
+    : "h-rect-lg";
+
   const pt = props.size === "sm" ? "pt-3" : props.size === "md" ? "pt-4" : "pt-5";
 
   const onMouseOver = (e: React.MouseEvent<HTMLDivElement>) => {
@@ -64,17 +86,27 @@ export default function Card(props: CardProps) {
       const data = imageData.data;
       let r = 0,
         g = 0,
-        b = 0;
+        b = 0,
+        a = 0;
 
       for (let i = 0; i < data.length; i += 4) {
-        r += data[i];
-        g += data[i + 1];
-        b += data[i + 2];
+        if (data[i + 3] === 0) {
+          r += 255;
+          g += 255;
+          b += 255;
+          a += data[i + 3];
+        } else {
+          r += data[i];
+          g += data[i + 1];
+          b += data[i + 2];
+          a += data[i + 3];
+        }
       }
 
       r = Math.floor(r / (data.length / 4));
       g = Math.floor(g / (data.length / 4));
       b = Math.floor(b / (data.length / 4));
+      a = Math.floor(a / (data.length / 4));
       setBgColor(`rgb(${r},${g},${b})`);
     };
     img.src = props.url;
@@ -82,7 +114,7 @@ export default function Card(props: CardProps) {
 
   useEffect(() => {
     setTimeout(() => {
-      setCardScale(100);
+      setCardScale("scale-100");
     }, 1000);
   }, [cardScale]);
 
@@ -90,7 +122,7 @@ export default function Card(props: CardProps) {
     <div
       ref={cardRef}
       style={{ backgroundColor: `${bgColor}` }}
-      className={`${width} ${height} ${bgColor} rounded-lg shadow-md flex flex-col ${pt} justify-start items-center transition-transform scale-${cardScale}`}
+      className={`${width} ${height} ${bgColor} rounded-lg shadow-md flex flex-col ${pt} justify-start items-center transition-transform ${cardScale}`}
       onMouseMove={onMouseOver}
       onMouseOut={onMouseOut}
     >
