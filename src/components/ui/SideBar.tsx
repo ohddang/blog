@@ -24,7 +24,7 @@ export default function SideBar() {
   }, []);
 
   return (
-    <div className="w-52 z-10">
+    <div className="w-52 z-10 min-w-48">
       <div className="fixed w-48 min-w-48 p-2 h-screen flex flex-col gap-2 bg-gray-900 text-white text-base">
         {LinkList.map((link) => (
           <>

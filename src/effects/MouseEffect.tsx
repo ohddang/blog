@@ -44,7 +44,6 @@ const MouseEffect = () => {
         if (balls.length > 300) {
           setBalls((currentBalls) => [...currentBalls.slice(100, balls.length), newBall]);
         } else setBalls((currentBalls) => [...currentBalls, newBall]);
-        console.log(balls.length);
       }
       animationFrameId = requestAnimationFrame(draw);
     };

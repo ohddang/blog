@@ -1,8 +1,10 @@
 import { useEffect, useRef, useState } from "react";
+import { MediaQuerySize } from "../../hooks/useMediaQuery";
 
 interface CardProps {
   url: string;
-  size: "sm" | "md" | "lg";
+  size: MediaQuerySize;
+  verticalAlign?: "top" | "center" | "bottom";
   isSquare?: boolean;
   children?: React.ReactNode;
 }
@@ -12,30 +14,35 @@ export default function Card(props: CardProps) {
   const [cardScale, setCardScale] = useState<string>("scale-0");
   const [bgColor, setBgColor] = useState<string>("");
 
-  let width = props.isSquare
-    ? props.size === "sm"
-      ? "w-square-sm"
-      : props.size === "md"
-      ? "w-sqaure-md"
-      : "w-square-lg"
-    : props.size === "sm"
-    ? "w-20"
-    : props.size === "md"
-    ? "w-1/2"
-    : "w-rect-lg";
-  let height = props.isSquare
-    ? props.size === "sm"
-      ? "h-square-sm"
-      : props.size === "md"
-      ? "h-square-md"
-      : "h-square-lg"
-    : props.size === "sm"
-    ? "h-32"
-    : props.size === "md"
-    ? "h-5/6"
-    : "h-rect-lg";
+  const sizeToWidth = {
+    square: { 0: "w-square-sm", 1: "w-square-md", 2: "w-square-lg" },
+    rectangle: { 0: "w-rect-sm", 1: "w-rect-md", 2: "w-rect-lg" },
+  };
 
-  const pt = props.size === "sm" ? "pt-3" : props.size === "md" ? "pt-4" : "pt-5";
+  const sizeToHeight = {
+    square: { 0: "h-square-sm", 1: "h-square-md", 2: "h-square-lg" },
+    rectangle: { 0: "h-rect-sm", 1: "h-rect-md", 2: "h-rect-lg" },
+  };
+
+  const shapeType = props.isSquare ? "square" : "rectangle";
+
+  let width = sizeToWidth[shapeType][props.size];
+  let height = sizeToHeight[shapeType][props.size];
+
+  const py =
+    props.verticalAlign === "center"
+      ? ""
+      : props.size === MediaQuerySize.SMALL
+      ? "py-3"
+      : props.size === MediaQuerySize.MEDIUM
+      ? "py-4"
+      : "py-5";
+  const verticalAlign =
+    props.verticalAlign === "top"
+      ? "justify-start"
+      : props.verticalAlign === "center"
+      ? "justify-center"
+      : "justify-end";
 
   const onMouseOver = (e: React.MouseEvent<HTMLDivElement>) => {
     const element = cardRef?.current;
@@ -119,15 +126,17 @@ export default function Card(props: CardProps) {
   }, [cardScale]);
 
   return (
-    <div
-      ref={cardRef}
-      style={{ backgroundColor: `${bgColor}` }}
-      className={`${width} ${height} ${bgColor} rounded-lg shadow-md flex flex-col ${pt} justify-start items-center transition-transform ${cardScale}`}
-      onMouseMove={onMouseOver}
-      onMouseOut={onMouseOut}
-    >
-      <img className="rounded w-11/12 h-5/6" src={props.url} />
-      <div className="w-11/12 h-1/6">{props.children}</div>
+    <div className="flex flex-col justify-center items-center h-full">
+      <div
+        ref={cardRef}
+        style={{ backgroundColor: `${bgColor}` }}
+        className={`${width} ${height} ${bgColor} h-min-full rounded-lg shadow-md flex flex-col ${py} ${verticalAlign} items-center transition-transform ${cardScale}`}
+        onMouseMove={onMouseOver}
+        onMouseOut={onMouseOut}
+      >
+        <img className="rounded w-11/12 h-5/6" src={props.url} />
+        {props.children && <div className="w-11/12 h-1/6">{props.children}</div>}
+      </div>
     </div>
   );
 }

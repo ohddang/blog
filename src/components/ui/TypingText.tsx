@@ -1,11 +1,23 @@
 import { useEffect, useState } from "react";
+import { MediaQuerySize } from "../../hooks/useMediaQuery";
 
-export default function TypingText({ text }: { text: string }) {
+interface TypingTextProps {
+  text: string;
+  fontSize: MediaQuerySize;
+}
+
+export default function TypingText(props: TypingTextProps) {
   const [currentLength, setCurrentLength] = useState(0);
   const [textPart, setTextPart] = useState<string[]>([]);
+  const fontSize =
+    props.fontSize === MediaQuerySize.SMALL
+      ? "text-xl"
+      : props.fontSize === MediaQuerySize.LARGE
+      ? "text-3xl"
+      : "text-2xl";
 
   useEffect(() => {
-    const textPart = text.split("<br>");
+    const textPart = props.text.split("<br>");
     const len = textPart.reduce((acc, cur) => acc + cur.length, 0);
     setTextPart(textPart);
 
@@ -21,7 +33,7 @@ export default function TypingText({ text }: { text: string }) {
   }, []);
 
   return (
-    <div className="w-full text-3xl font-normal font-dunggeunmo whitespace-wrap leading-normal">
+    <div className={`w-full ${fontSize} font-normal font-dunggeunmo whitespace-wrap leading-normal`}>
       {textPart.map((part, i) => {
         const preLen = i > 0 ? textPart.slice(0, i).reduce((acc, cur) => acc + cur.length, 0) : 0;
         if (currentLength < preLen) return null;

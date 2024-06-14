@@ -1,3 +1,4 @@
+import { MediaQuerySize, MediaQueryType, useMediaQuery } from "../hooks/useMediaQuery";
 import Card from "./ui/Card";
 import TypingText from "./ui/TypingText";
 
@@ -33,12 +34,12 @@ const contentComponent = () => {
   return (
     <div className="w-full h-full flex flex-row justify-around items-center">
       <img
-        className="h-1/2 cursor-pointer"
+        className="h-1/2 cursor-pointer transition-transform hover:scale-110"
         src="logo/github.png"
         onClick={() => window.open("https://github.com/ohddang/", "_blank")}
       />
       <img
-        className="h-1/2 cursor-pointer"
+        className="h-1/2 cursor-pointer transition-transform hover:scale-110"
         src="logo/email.svg"
         onClick={() => (window.location.href = "mailto:your-email@example.com")}
       />
@@ -47,30 +48,51 @@ const contentComponent = () => {
 };
 
 export default function Home() {
+  const mediaQuery = useMediaQuery();
+  let size: MediaQuerySize = MediaQuerySize.LARGE;
+
+  switch (mediaQuery) {
+    case MediaQueryType.MOBILE:
+      size = MediaQuerySize.SMALL;
+      break;
+    case MediaQueryType.TABLET:
+      size = MediaQuerySize.MEDIUM;
+      break;
+    case MediaQueryType.DESKTOP:
+      size = MediaQuerySize.LARGE;
+      break;
+    case MediaQueryType.DESKTOP_2XL:
+      size = MediaQuerySize.LARGE;
+      break;
+  }
+  const layout = size === MediaQuerySize.LARGE ? "flex-row" : "flex-col";
+
   return (
     <>
-      <div className="w-full flex flex-col bg-green-500 text-white [&>*]:p-20 [&>*]:h-screen [&>*:nth-child(odd)]:bg-gray-800 [&>*:nth-child(even)]:bg-gray-700">
-        <div className="w-full h-screen gap-10 relaitve flex flex-row justify-between text-3xl font-bold transition-all transition-duration-1000">
-          <TypingText text={intro} />
-          <Card url="images/profile.jpg" size="lg" children={contentComponent()} />
+      <div className="w-full h-full flex flex-col text-white [&>*]:p-20 [&>*]:h-screen [&>*:nth-child(odd)]:bg-gray-800 [&>*:nth-child(even)]:bg-gray-700">
+        <div
+          className={`w-full h-screen min-h-fit gap-5 relaitve flex ${layout} justify-between items-center text-3xl font-bold transition-all transition-duration-1000`}
+        >
+          <TypingText text={intro} fontSize={size} />
+          <Card url="images/profile.jpg" size={size} children={contentComponent()} />
         </div>
-        <div className="flex flex-col gap-10">
+        <div className="w-full min-h-fit flex flex-col gap-10">
           <div className="text-3xl font-bold">FrontEnd</div>
-          <div className="flex flex-row gap-5">
-            {frontend.map((item, i) => {
-              return <Card url={item.url} size="sm" isSquare={true} />;
+          <div className="w-fit grid grid-cols-5 gap-5">
+            {frontend.map((item) => {
+              return <Card url={item.url} size={size} verticalAlign="center" isSquare={true} />;
             })}
           </div>
           <div className="text-3xl font-bold">BackEnd</div>
           <div className="flex flex-row gap-5">
-            {backend.map((item, i) => {
-              return <Card url={item.url} size="sm" isSquare={true} />;
+            {backend.map((item) => {
+              return <Card url={item.url} size={size} verticalAlign="center" isSquare={true} />;
             })}
           </div>
           <div className="text-3xl font-bold">ETC</div>
           <div className="flex flex-row gap-5">
-            {etc.map((item, i) => {
-              return <Card url={item.url} size="sm" isSquare={true} />;
+            {etc.map((item) => {
+              return <Card url={item.url} size={size} verticalAlign="center" isSquare={true} />;
             })}
           </div>
         </div>
