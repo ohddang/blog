@@ -11,7 +11,7 @@ const LinkList = [
   { name: "Chartjs", path: "/chartjs" },
   { name: "Q&A Board", path: "/qaboard" },
   { name: "DashBoard", path: "/dashboard" },
-  { name: "Chatting", path: "/chatting" },
+  { name: "🔥 Chatting", path: "/chatting" },
 ];
 
 export default function SideBar() {
