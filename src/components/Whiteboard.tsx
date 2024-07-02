@@ -1,6 +1,6 @@
 export default function Whiteboard() {
   return (
-    <div className="w-full h-screen bg-gray-100 flex justify-center items-center relative">
+    <div className="w-10/12 h-screen bg-gray-100 flex justify-center items-center relative">
       <button
         className="text-4xl font-bold absolute top-10 left-10 animate-bounce"
         onClick={() => window.open("https://ohddang.github.io/whiteboard", "_blank")}

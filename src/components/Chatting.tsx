@@ -34,40 +34,41 @@ export default function Chatting() {
   }, [isHover, timeRefresh]);
 
   return (
-    <div className="w-full h-screen bg-gray-800 flex flex-col justify-center items-center relative">
+    <div className="w-10/12 h-screen bg-gray-800 flex flex-col justify-center items-center relative">
       <div className="w-42 h-full flex flex-row items-end text-sm font-bold gap-1 absolute bottom-10 left-10 z-10 ">
         <div className="w-full p-2 rounded bg-white/50 flex flex-col gap-5 relative">
           <div>AWS에 배포 현재는 중단</div>
         </div>
       </div>
       <div
-        className={`w-2/3 h-2/3 relative ${outlineStyle}`}
+        className={`w-[300px] h-[200px] md:w-[420px] md:h-[280px] lg:w-[540px] lg:h-[360px] xl:w-[720px] xl:h-[480px] flex relative mb-4 ${outlineStyle}`}
         onMouseEnter={() => setIsHover(true)}
         onMouseLeave={() => setIsHover(false)}
       >
         {opacity.map((op, i) => {
           return (
             <div key={i} className={`w-full h-full absolute top-0 left-0 transition-opacity duration-1000 ${op}`}>
-              <img className="w-full h-full" src={`background/chatting${i}.png`} />
+              <img
+                className="w-[300px] h-[200px] md:w-[420px] md:h-[280px] lg:w-[540px] lg:h-[360px] xl:w-[720px] xl:h-[480px]"
+                src={`background/chatting${i}.png`}
+              />
             </div>
           );
         })}
       </div>
-      <div>
+      <div className="w-2/3 grid grid-cols-11 justify-items-center gap-4">
         {opacity.map((_, i) => {
           return (
             <button
               key={i}
-              className={`w-10 h-10 text-6xl font-bold ${
-                i === index ? "text-yellow-500" : "text-white"
+              className={`w-3 h-3 gap-4 rounded-full  ${
+                i === index ? "bg-yellow-500" : "bg-white"
               } focus:outline-none hover:scale-110 transition-transform duration-500`}
               onClick={() => {
                 setIsIndex(i);
                 setTimeRefresh(!timeRefresh);
               }}
-            >
-              {"."}
-            </button>
+            ></button>
           );
         })}
       </div>

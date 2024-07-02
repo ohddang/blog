@@ -14,7 +14,7 @@ export default {
       width: {
         "rect-lg": "400px",
         "rect-md": "280px",
-        "rect-sm": "140px",
+        "rect-sm": "210px",
         "square-lg": "120px",
         "square-md": "70px",
         "square-sm": "40px",
@@ -22,7 +22,7 @@ export default {
       height: {
         "rect-lg": "600px",
         "rect-md": "420px",
-        "rect-sm": "210px",
+        "rect-sm": "315px",
         "square-lg": "120px",
         "square-md": "70px",
         "square-sm": "40px",
@@ -32,5 +32,5 @@ export default {
   variants: {
     extend: {},
   },
-  plugins: [],
+  plugins: [require("tailwind-scrollbar-hide")],
 };

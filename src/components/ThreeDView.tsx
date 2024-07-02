@@ -4,7 +4,7 @@ import * as THREE from "three";
 export default function ThreeDView() {
   const ref = useRef<HTMLDivElement>(null);
   const cubes: THREE.Mesh[] = [];
-  const sidebarWidth = 192;
+  const sidebarWidth = 0;
 
   useEffect(() => {
     const currentRef = ref.current;
@@ -107,13 +107,13 @@ export default function ThreeDView() {
   }, []);
 
   return (
-    <div className="w-full h-screen relative">
-      <div className="w-full h-screen min-h-screen" ref={ref} />
-      <div className="text-4xl font-bold absolute top-8 left-8 z-10">
+    <div className="w-10/12 h-full relative">
+      <div className="w-full h-full min-h-screen" ref={ref} />
+      <div className="max-[640px]:text-xl sm:text-2xl lg:text-3xl xl:text-4xl font-bold absolute top-8 left-8 z-10">
         <div className="rounded p-2 bg-white/50 flex flex-col gap-5">
           <h1>Forward : W</h1>
           <h1>Backward : S</h1>
-          <h1>Rotation : ⬅️⬆️⬇️➡️</h1>
+          <h1 className="whitespace-nowrap">Rotation : ⬅️⬆️⬇️➡️</h1>
         </div>
       </div>
     </div>

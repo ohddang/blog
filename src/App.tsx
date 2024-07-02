@@ -10,12 +10,12 @@ import DashBoard from "./components/dashboard";
 import Chatting from "./components/Chatting";
 import Chartjs from "./components/Chartjs";
 import Home from "./components/Home";
-import MouseEffect from "./effects/MouseEffect";
+// import MouseEffect from "./effects/MouseEffect";
 
 function App() {
   return (
     <BrowserRouter basename="/this-is-me">
-      <section className="w-full h-full flex flex-row">
+      <section className="w-full h-full flex flex-row justify-start">
         <SideBar />
         <Routes>
           <Route path="/" element={<Home />} />
@@ -29,7 +29,7 @@ function App() {
           <Route path="/tetris" element={<Tetris />} />
           <Route path="/chatting" element={<Chatting />} />
         </Routes>
-        <MouseEffect />
+        {/* <MouseEffect /> */}
       </section>
     </BrowserRouter>
   );

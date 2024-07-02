@@ -23,7 +23,9 @@ const backend = [
   { name: "", url: "logo/typeorm.svg" },
 ];
 
-const intro = `안녕하세요. 웹 개발자 오영곤입니다. <br>저는 프론트엔드로 웹 개발을 시작하였으며<br>이후 짧은 기간동안 다양한 경험을 통해 새로운 환경에서도 빨리 적응할 수 있는 역량을 키웠습니다. <br>추후에는 프론트엔드, 백엔드, 인프라를 아우르는 풀스택 개발자가 되기 위해 노력하고 있습니다.`;
+const intro = `안녕하세요. 웹 개발자 오영곤입니다.<br>
+저는 프론트엔드로 웹 개발을 시작하였으며 이후 짧은 기간동안 다양한 경험을 통해 새로운 환경에서도 빨리 적응할 수 있는 역량을 키웠습니다.<br>
+추후에는 프론트엔드, 백엔드, 인프라를 아우르는 풀스택 개발자가 되기 위해 노력하고 있습니다.<br>`;
 
 const etc = [
   { name: "", url: "logo/aws.svg" },
@@ -59,24 +61,24 @@ export default function Home() {
       size = MediaQuerySize.MEDIUM;
       break;
     case MediaQueryType.DESKTOP:
-      size = MediaQuerySize.LARGE;
+      size = MediaQuerySize.MEDIUM;
       break;
     case MediaQueryType.DESKTOP_2XL:
-      size = MediaQuerySize.LARGE;
+      size = MediaQuerySize.MEDIUM;
       break;
   }
-  const layout = size === MediaQuerySize.LARGE ? "flex-row" : "flex-col";
+  const layout = "flex-col";
 
   return (
     <>
-      <div className="w-full h-full flex flex-col text-white [&>*]:p-20 [&>*]:h-screen [&>*:nth-child(odd)]:bg-gray-800 [&>*:nth-child(even)]:bg-gray-700">
+      <div className="w-10/12 h-full flex flex-col text-white [&>*]:h-screen [&>*:nth-child(odd)]:bg-gray-800 [&>*:nth-child(even)]:bg-gray-700">
         <div
-          className={`w-full h-screen min-h-fit gap-5 relaitve flex ${layout} justify-between items-center text-3xl font-bold transition-all transition-duration-1000`}
+          className={`w-full h-screen min-h-fit gap-5 p-20 max-[640px]:p-8 relaitve flex ${layout} justify-center items-center text-3xl font-bold transition-all transition-duration-1000`}
         >
           <TypingText text={intro} fontSize={size} />
           <Card url="images/profile.jpg" size={size} children={contentComponent()} />
         </div>
-        <div className="w-full min-h-fit flex flex-col gap-10">
+        <div className="w-full min-h-fit flex flex-col gap-10 p-20 max-[640px]:p-4">
           <div className="text-3xl font-bold">FrontEnd</div>
           <div className="w-fit grid grid-cols-5 gap-5">
             {frontend.map((item) => {

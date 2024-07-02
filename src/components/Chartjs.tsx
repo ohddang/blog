@@ -1,6 +1,6 @@
 export default function Chartjs() {
   return (
-    <div className="w-full h-screen relative">
+    <div className="w-10/12 h-screen relative">
       <iframe src="https://chartjs-alpha.vercel.app/dashboard/KRW-BTC" className="w-full h-screen"></iframe>
       <div className="text-4xl font-bold flex flex-col gap-5 absolute top-10 left-10 z-10">
         <h1></h1>

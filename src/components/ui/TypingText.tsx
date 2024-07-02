@@ -13,8 +13,8 @@ export default function TypingText(props: TypingTextProps) {
     props.fontSize === MediaQuerySize.SMALL
       ? "text-xl"
       : props.fontSize === MediaQuerySize.LARGE
-      ? "text-3xl"
-      : "text-2xl";
+      ? "text-2xl"
+      : "text-xl";
 
   useEffect(() => {
     const textPart = props.text.split("<br>");
@@ -33,7 +33,7 @@ export default function TypingText(props: TypingTextProps) {
   }, []);
 
   return (
-    <div className={`w-full ${fontSize} font-normal font-dunggeunmo whitespace-wrap leading-normal`}>
+    <div className={`w-fit ${fontSize} font-normal font-dunggeunmo whitespace-wrap leading-normal`}>
       {textPart.map((part, i) => {
         const preLen = i > 0 ? textPart.slice(0, i).reduce((acc, cur) => acc + cur.length, 0) : 0;
         if (currentLength < preLen) return null;

@@ -1,6 +1,6 @@
 export default function Coin() {
   return (
-    <div className="w-full h-screen flex flex-col justify-center items-center bg-gray-100 relative">
+    <div className="w-10/12 h-screen flex flex-col justify-center items-center bg-gray-100 relative">
       <button
         className="text-4xl font-bold absolute top-10 left-10 animate-bounce"
         onClick={() =>

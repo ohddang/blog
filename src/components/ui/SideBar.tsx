@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { MediaQuerySize, MediaQueryType, useMediaQuery } from "../../hooks/useMediaQuery";
 
 const LinkList = [
   { name: "Home", path: "//" },
@@ -16,16 +17,33 @@ const LinkList = [
 
 export default function SideBar() {
   const [pathname, setPathname] = useState<string>(window.location.pathname);
+  const mediaQuery = useMediaQuery();
+  let size: MediaQuerySize = MediaQuerySize.LARGE;
 
-  const style = "w-full h-12 flex justify-center items-center text-white rounded hover:bg-gray-800";
+  switch (mediaQuery) {
+    case MediaQueryType.MOBILE:
+      size = MediaQuerySize.SMALL;
+      break;
+    case MediaQueryType.TABLET:
+      size = MediaQuerySize.MEDIUM;
+      break;
+    case MediaQueryType.DESKTOP:
+      size = MediaQuerySize.MEDIUM;
+      break;
+    case MediaQueryType.DESKTOP_2XL:
+      size = MediaQuerySize.MEDIUM;
+      break;
+  }
+
+  const style = "w-full h-12 flex justify-center items-center text-white rounded hover:bg-gray-800 whitespace-nowrap";
 
   useEffect(() => {
     setPathname(LinkList[0].path);
   }, []);
 
   return (
-    <div className="w-52 z-10 min-w-48">
-      <div className="fixed w-48 min-w-48 p-2 h-screen flex flex-col gap-2 bg-gray-900 text-white text-base">
+    <div className="w-2/12 z-10">
+      <div className="fixed w-2/12 h-screen flex flex-col gap-2 bg-gray-900 text-white max-[640px]:p-2 sm:p-3 lg:p-4 max-[640px]:text-xs sm:text-base">
         {LinkList.map((link) => (
           <>
             {link.name === "border" ? (
