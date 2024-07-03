@@ -126,7 +126,7 @@ export default function Card(props: CardProps) {
   }, [cardScale]);
 
   return (
-    <div className="flex flex-col justify-center items-center h-full">
+    <div className="flex flex-col justify-center items-center">
       <div
         ref={cardRef}
         style={{ backgroundColor: `${bgColor}` }}

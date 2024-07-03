@@ -61,38 +61,44 @@ export default function Home() {
       size = MediaQuerySize.MEDIUM;
       break;
     case MediaQueryType.DESKTOP:
-      size = MediaQuerySize.MEDIUM;
+      size = MediaQuerySize.LARGE;
       break;
     case MediaQueryType.DESKTOP_2XL:
-      size = MediaQuerySize.MEDIUM;
+      size = MediaQuerySize.LARGE;
       break;
   }
-  const layout = "flex-col";
+  const flexDirection = "flex-col";
+  const layout = size === MediaQuerySize.SMALL ? "grid grid-cols-3 justify-items-center" : "flex flex-row";
+  const gap = size === MediaQuerySize.SMALL ? "gap-5" : "gap-10";
+  const padding = size === MediaQuerySize.SMALL ? "p-4" : "p-8";
+  const justify = size === MediaQuerySize.SMALL ? "justify-between" : "justify-center";
 
   return (
     <>
-      <div className="w-10/12 h-full flex flex-col text-white [&>*]:h-screen [&>*:nth-child(odd)]:bg-gray-800 [&>*:nth-child(even)]:bg-gray-700">
+      <div className="w-10/12 h-full flex flex-col text-white [&>*:nth-child(odd)]:bg-gray-800 [&>*:nth-child(even)]:bg-gray-700">
         <div
-          className={`w-full h-screen min-h-fit gap-5 p-20 max-[640px]:p-8 relaitve flex ${layout} justify-center items-center text-3xl font-bold transition-all transition-duration-1000`}
+          className={`w-full min-h-fit h-fit gap-5 ${padding} relaitve flex ${flexDirection} ${justify} items-center text-3xl font-bold transition-all transition-duration-1000`}
         >
-          <TypingText text={intro} fontSize={size} />
           <Card url="images/profile.jpg" size={size} children={contentComponent()} />
+          <TypingText text={intro} fontSize={size} />
         </div>
-        <div className="w-full min-h-fit flex flex-col gap-10 p-20 max-[640px]:p-4">
+        <div
+          className={`w-full min-h-fit h-fit flex flex-col ${padding} ${justify} items-center ${gap} max-[640px]:p-4`}
+        >
           <div className="text-3xl font-bold">FrontEnd</div>
-          <div className="w-fit grid grid-cols-5 gap-5">
+          <div className="w-fit grid grid-cols-5 justify-items-center gap-3 md:gap-4 xl:gap-5">
             {frontend.map((item) => {
               return <Card url={item.url} size={size} verticalAlign="center" isSquare={true} />;
             })}
           </div>
           <div className="text-3xl font-bold">BackEnd</div>
-          <div className="flex flex-row gap-5">
+          <div className={`${layout} gap-3 md:gap-4 xl:gap-5`}>
             {backend.map((item) => {
               return <Card url={item.url} size={size} verticalAlign="center" isSquare={true} />;
             })}
           </div>
           <div className="text-3xl font-bold">ETC</div>
-          <div className="flex flex-row gap-5">
+          <div className="flex flex-row gap-3 md:gap-4 xl:gap-5">
             {etc.map((item) => {
               return <Card url={item.url} size={size} verticalAlign="center" isSquare={true} />;
             })}

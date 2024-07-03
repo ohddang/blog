@@ -55,7 +55,9 @@ const Cube: React.FC = () => {
       className="w-10/12 flex flex-col  justify-center items-center h-screen min-h-screen bg-gray-100 relative"
       ref={panelRef}
     >
-      <h1 className="text-4xl font-bold absolute top-10 left-10 animate-bounce z-10">Touch Cube</h1>
+      <h1 className="text-xs sm:text-xl lg:text-2xl xl:text-4xl font-bold absolute top-10 left-10 animate-bounce z-10">
+        Touch Cube
+      </h1>
       <div
         id="dice"
         className="w-48 h-48 relative"

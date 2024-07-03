@@ -29,12 +29,16 @@ export const useMediaQuery = () => {
     const desktopQuery = window.matchMedia("(min-width: 1024px) and (max-width: 1535px)");
     const desktop2XLQuery = window.matchMedia("(min-width: 1536px)");
 
+    const heightMobileQuery = window.matchMedia("(max-height: 500px)");
+    const heightShortQuery = window.matchMedia("(min-height: 501px) and (max-height: 800px)");
+    const heightTallQuery = window.matchMedia("(min-height: 801px)");
+
     // 초기 미디어 쿼리 상태 설정
-    if (mobileQuery.matches) {
+    if (mobileQuery.matches || heightMobileQuery.matches) {
       setMediaQuery(MediaQueryType.MOBILE);
-    } else if (tabletQuery.matches) {
+    } else if (tabletQuery.matches || heightShortQuery.matches) {
       setMediaQuery(MediaQueryType.TABLET);
-    } else if (desktopQuery.matches) {
+    } else if (desktopQuery.matches || heightTallQuery.matches) {
       setMediaQuery(MediaQueryType.DESKTOP);
     } else if (desktop2XLQuery.matches) {
       setMediaQuery(MediaQueryType.DESKTOP_2XL);

@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { MediaQuerySize, MediaQueryType, useMediaQuery } from "../hooks/useMediaQuery";
 
 const size = 22;
 
@@ -7,6 +8,29 @@ export default function Chatting() {
   const [opacity, setOpacity] = useState<string[]>([]);
   const [isHover, setIsHover] = useState<boolean>(false);
   const [timeRefresh, setTimeRefresh] = useState<boolean>(false);
+
+  const mediaQuery = useMediaQuery();
+  let mediaSize: MediaQuerySize = MediaQuerySize.LARGE;
+  switch (mediaQuery) {
+    case MediaQueryType.MOBILE:
+      mediaSize = MediaQuerySize.SMALL;
+      break;
+    case MediaQueryType.TABLET:
+      mediaSize = MediaQuerySize.MEDIUM;
+      break;
+    case MediaQueryType.DESKTOP:
+      mediaSize = MediaQuerySize.LARGE;
+      break;
+    case MediaQueryType.DESKTOP_2XL:
+      mediaSize = MediaQuerySize.LARGE;
+      break;
+  }
+
+  const fontSize =
+    mediaSize === MediaQuerySize.SMALL ? "text-[9px]" : mediaSize === MediaQuerySize.MEDIUM ? "text-xs" : "text-md";
+  const top = mediaSize === MediaQuerySize.SMALL ? "top-1" : mediaSize === MediaQuerySize.MEDIUM ? "top-5" : "top-10";
+  const left =
+    mediaSize === MediaQuerySize.SMALL ? "left-1" : mediaSize === MediaQuerySize.MEDIUM ? "left-5" : "left-10";
 
   const outlineStyle = isHover ? "outline outline-5 outline-yellow-500" : "";
 
@@ -35,13 +59,15 @@ export default function Chatting() {
 
   return (
     <div className="w-10/12 h-screen bg-gray-800 flex flex-col justify-center items-center relative">
-      <div className="w-42 h-full flex flex-row items-end text-sm font-bold gap-1 absolute bottom-10 left-10 z-10 ">
-        <div className="w-full p-2 rounded bg-white/50 flex flex-col gap-5 relative">
-          <div>AWS에 배포 현재는 중단</div>
+      <div
+        className={`w-fit h-fit p-1 flex flex-row items-end text-[8px] ${fontSize} font-bold absolute ${top} ${left} z-10`}
+      >
+        <div className="w-full h-full p-2 rounded bg-white/50 flex justify-center items-center">
+          <p className="whitespace-nowrap">MSA서버구조 AWS에 배포</p>
         </div>
       </div>
       <div
-        className={`w-[300px] h-[200px] md:w-[420px] md:h-[280px] lg:w-[540px] lg:h-[360px] xl:w-[720px] xl:h-[480px] flex relative mb-4 ${outlineStyle}`}
+        className={`w-[300px] h-[200px] md:w-[420px] md:h-[280px] lg:w-[540px] lg:h-[360px] xl:w-[720px] xl:h-[480px] flex relative mb-4 lg:mb-10 ${outlineStyle}`}
         onMouseEnter={() => setIsHover(true)}
         onMouseLeave={() => setIsHover(false)}
       >
@@ -56,7 +82,7 @@ export default function Chatting() {
           );
         })}
       </div>
-      <div className="w-2/3 grid grid-cols-11 justify-items-center gap-4">
+      <div className="w-2/3 lg:w-1/2 grid grid-cols-11 justify-items-center gap-4">
         {opacity.map((_, i) => {
           return (
             <button

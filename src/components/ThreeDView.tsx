@@ -11,7 +11,7 @@ export default function ThreeDView() {
 
     const scene = new THREE.Scene();
     scene.background = new THREE.Color(0xf0f0f0);
-    const camera = new THREE.PerspectiveCamera(75, (window.innerWidth - sidebarWidth) / window.innerHeight, 0.1, 1000);
+    const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
     const renderer = new THREE.WebGLRenderer();
 
     const keyState: { [key: string]: boolean } = {};
@@ -109,8 +109,8 @@ export default function ThreeDView() {
   return (
     <div className="w-10/12 h-full relative">
       <div className="w-full h-full min-h-screen" ref={ref} />
-      <div className="max-[640px]:text-xl sm:text-2xl lg:text-3xl xl:text-4xl font-bold absolute top-8 left-8 z-10">
-        <div className="rounded p-2 bg-white/50 flex flex-col gap-5">
+      <div className="text-xs sm:text-xl lg:text-2xl xl:text-4xl font-bold absolute top-8 left-8 z-10">
+        <div className="rounded p-2 bg-white/50 flex flex-col gap-1 sm:gap-3 lg:gap-5">
           <h1>Forward : W</h1>
           <h1>Backward : S</h1>
           <h1 className="whitespace-nowrap">Rotation : ⬅️⬆️⬇️➡️</h1>
