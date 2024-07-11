@@ -56,14 +56,19 @@ export default function Chatting() {
   }, [isHover, timeRefresh]);
 
   return (
-    <div className="w-10/12 h-screen bg-gray-800 flex flex-col flex-start sm:justify-center items-center relative">
+    <div className="w-10/12 h-screen bg-gray-800 pt-16 sm:pt-0 flex flex-col flex-start sm:justify-center items-center gap-3 relative">
       <div className={`w-fit h-fit p-1 flex flex-row items-end ${fontSize} font-bold absolute top-3 left-3 z-10`}>
         <div className="w-full h-full p-2 rounded bg-white/50 flex justify-center items-center">
           <p className="whitespace-nowrap">MSA서버구조 AWS에 배포</p>
         </div>
       </div>
+
+      <div className={`text-white ${fontSize}`}>
+        <p>실시간 채팅 웹 사이트</p>
+        <p>React + NestJS + AWS</p>
+      </div>
       <div
-        className={`w-[300px] h-[200px] md:w-[420px] md:h-[280px] lg:w-[540px] lg:h-[360px] xl:w-[720px] xl:h-[480px] flex relative mb-4 lg:mb-10 mt-16 sm:mt-0 ${outlineStyle}`}
+        className={`w-[300px] h-[200px] md:w-[420px] md:h-[280px] lg:w-[540px] lg:h-[360px] xl:w-[720px] xl:h-[480px] flex relative mb-4 lg:mb-10 ${outlineStyle}`}
         onMouseEnter={() => setIsHover(true)}
         onMouseLeave={() => setIsHover(false)}
       >
@@ -80,7 +85,9 @@ export default function Chatting() {
           return (
             <button
               key={i}
-              className={`w-3 h-3 gap-4 rounded-full  ${i === index ? "bg-yellow-500" : "bg-white"} focus:outline-none hover:scale-110 transition-transform duration-500`}
+              className={`w-2 h-2 sm:w-3 sm:h-3 gap-4 rounded-full  ${
+                i === index ? "bg-yellow-500" : "bg-white"
+              } focus:outline-none hover:scale-110 transition-transform duration-500`}
               onClick={() => {
                 setIsIndex(i);
                 setTimeRefresh(!timeRefresh);
