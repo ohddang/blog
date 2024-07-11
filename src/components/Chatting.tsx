@@ -26,11 +26,9 @@ export default function Chatting() {
       break;
   }
 
-  const fontSize =
-    mediaSize === MediaQuerySize.SMALL ? "text-[9px]" : mediaSize === MediaQuerySize.MEDIUM ? "text-xs" : "text-md";
+  const fontSize = mediaSize === MediaQuerySize.SMALL ? "text-xs" : mediaSize === MediaQuerySize.MEDIUM ? "text-xs" : "text-md";
   const top = mediaSize === MediaQuerySize.SMALL ? "top-1" : mediaSize === MediaQuerySize.MEDIUM ? "top-5" : "top-10";
-  const left =
-    mediaSize === MediaQuerySize.SMALL ? "left-1" : mediaSize === MediaQuerySize.MEDIUM ? "left-5" : "left-10";
+  const left = mediaSize === MediaQuerySize.SMALL ? "left-1" : mediaSize === MediaQuerySize.MEDIUM ? "left-5" : "left-10";
 
   const outlineStyle = isHover ? "outline outline-5 outline-yellow-500" : "";
 
@@ -58,26 +56,21 @@ export default function Chatting() {
   }, [isHover, timeRefresh]);
 
   return (
-    <div className="w-10/12 h-screen bg-gray-800 flex flex-col justify-center items-center relative">
-      <div
-        className={`w-fit h-fit p-1 flex flex-row items-end text-[8px] ${fontSize} font-bold absolute ${top} ${left} z-10`}
-      >
+    <div className="w-10/12 h-screen bg-gray-800 flex flex-col flex-start sm:justify-center items-center relative">
+      <div className={`w-fit h-fit p-1 flex flex-row items-end ${fontSize} font-bold absolute top-3 left-3 z-10`}>
         <div className="w-full h-full p-2 rounded bg-white/50 flex justify-center items-center">
           <p className="whitespace-nowrap">MSA서버구조 AWS에 배포</p>
         </div>
       </div>
       <div
-        className={`w-[300px] h-[200px] md:w-[420px] md:h-[280px] lg:w-[540px] lg:h-[360px] xl:w-[720px] xl:h-[480px] flex relative mb-4 lg:mb-10 ${outlineStyle}`}
+        className={`w-[300px] h-[200px] md:w-[420px] md:h-[280px] lg:w-[540px] lg:h-[360px] xl:w-[720px] xl:h-[480px] flex relative mb-4 lg:mb-10 mt-16 sm:mt-0 ${outlineStyle}`}
         onMouseEnter={() => setIsHover(true)}
         onMouseLeave={() => setIsHover(false)}
       >
         {opacity.map((op, i) => {
           return (
             <div key={i} className={`w-full h-full absolute top-0 left-0 transition-opacity duration-1000 ${op}`}>
-              <img
-                className="w-[300px] h-[200px] md:w-[420px] md:h-[280px] lg:w-[540px] lg:h-[360px] xl:w-[720px] xl:h-[480px]"
-                src={`background/chatting${i}.png`}
-              />
+              <img className="w-[300px] h-[200px] md:w-[420px] md:h-[280px] lg:w-[540px] lg:h-[360px] xl:w-[720px] xl:h-[480px]" src={`background/chatting${i}.png`} />
             </div>
           );
         })}
@@ -87,9 +80,7 @@ export default function Chatting() {
           return (
             <button
               key={i}
-              className={`w-3 h-3 gap-4 rounded-full  ${
-                i === index ? "bg-yellow-500" : "bg-white"
-              } focus:outline-none hover:scale-110 transition-transform duration-500`}
+              className={`w-3 h-3 gap-4 rounded-full  ${i === index ? "bg-yellow-500" : "bg-white"} focus:outline-none hover:scale-110 transition-transform duration-500`}
               onClick={() => {
                 setIsIndex(i);
                 setTimeRefresh(!timeRefresh);
@@ -98,10 +89,7 @@ export default function Chatting() {
           );
         })}
       </div>
-      <button
-        className="fixed w-10 h-10 text-4xl font-bold bottom-10 right-10 z-10"
-        onClick={() => window.open("https://github.com/Codeit-part4-team3", "_blank")}
-      >
+      <button className="fixed w-10 h-10 text-4xl font-bold bottom-10 right-10 z-10" onClick={() => window.open("https://github.com/Codeit-part4-team3", "_blank")}>
         <img className="w-10 h-10" src="logo/github.png" />
       </button>
     </div>
